@@ -1,19 +1,15 @@
+import { Routes, Route, Navigate } from "react-router-dom"
 import { Button } from '@mui/material'
 import axios from 'axios'
 
 function App() {
 
-  const checkDb = () => {
-    axios.get('http://localhost:5050/auth/checkDb')
-  }
-
   return (
     <div className="App">
       <Button
         variant="contained"
-        onClick={() => checkDb()}
       >
-        Check Database
+        Register
       </Button>
     </div>
   );
