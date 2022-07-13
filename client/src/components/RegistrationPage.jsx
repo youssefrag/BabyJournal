@@ -23,7 +23,7 @@ export default function RegistrationPage() {
        console.log('Empty values!')
        return
     }
-    axios.post('http://localhost:5050/auth/register', user, {
+    axios.get('http://localhost:5050/api/auth/register', user, {
        withCredentials: true,
     })
     .then((result) => { 

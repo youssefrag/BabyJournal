@@ -11,3 +11,18 @@ const addUser = function (name, email, password, pool) {
       console.log(err.message)
     })
 }
+
+const checkDb = function() {
+  return pool
+    .query(
+      `SELECT current_database();`
+    )
+    .then((result) => {
+      console.log('result:', result.rows)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, checkDb }
