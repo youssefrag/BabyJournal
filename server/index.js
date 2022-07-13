@@ -5,21 +5,15 @@ const pool = require("./db")
 
 const PORT = 5050
 
+const authRoutes = require('./routes/auth')
+
 //middleware
 app.use(cors())
 app.use(express.json());
 
 //ROUTES//
 
-//create a user
-
-app.post("/user", async(req, res) => {
-  try {
-    console.log(req.body)
-  } catch (err) {
-    console.error(err.message)
-  }
-})
+app.use('/auth', authRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server has started on port ${PORT}`)
