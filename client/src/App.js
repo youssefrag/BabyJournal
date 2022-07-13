@@ -4,7 +4,7 @@ import axios from 'axios'
 function App() {
 
   const checkDb = () => {
-    axios.post('http://localhost:5050/auth/checkDb')
+    axios.get('http://localhost:5050/auth/checkDb')
   }
 
   return (
