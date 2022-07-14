@@ -8,7 +8,13 @@ const authRoutes = require('./routes/auth')
 
 const { Pool } = require('pg');
 const dbParams = require("./lib/db.js")
-const db = new Pool(dbParams)
+const db = new Pool({
+  user: "youssefragab",
+  password: "password",
+  host: "localhost",
+  port: 5432,
+  database: "babyjournal"
+})
 db.connect()
 
 App.use(Cors({
@@ -26,7 +32,7 @@ App.use(CookieSession({
     httpOnly: false
 }));
 
-App.use('/api/auth', authRoutes(db));
+App.use('/auth', authRoutes(db));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console

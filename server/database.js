@@ -1,7 +1,7 @@
 const addUser = function (name, email, password, pool) {
   return pool
     .query(
-      `INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *;`, [name, email, password]
+      `INSERT INTO parent (name, email, password) VALUES ($1, $2, $3) RETURNING *;`, [name, email, password]
     )
     .then((result) => {
       // console.log(result.rows)
@@ -12,7 +12,7 @@ const addUser = function (name, email, password, pool) {
     })
 }
 
-const checkDb = function() {
+const checkDb = function(pool) {
   return pool
     .query(
       `SELECT current_database();`
