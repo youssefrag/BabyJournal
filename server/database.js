@@ -12,6 +12,24 @@ const addUser = function (name, email, password, pool) {
     })
 }
 
+const getUser = function (email, pool) {
+  return pool
+    .query(
+      `
+        SELECT * FROM parent
+        WHERE parent.email = $1;
+      `, [email]
+    )
+    .then((result) => {
+      // console.log(result.rows)
+      // console.log('result:', result.rows[0].password)
+      return result.rows[0]
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
 const checkDb = function(pool) {
   return pool
     .query(
@@ -25,4 +43,4 @@ const checkDb = function(pool) {
     })
 }
 
-module.exports = { addUser, checkDb }
+module.exports = { addUser, getUser, checkDb }

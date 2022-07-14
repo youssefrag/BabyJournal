@@ -20,12 +20,36 @@ module.exports = (db) => {
     return res.status(200).json({ message : "Register successful.", user: userToUse })
   });
 
-  router.post('/checkdb', async (req,res) => {
+  router.post('/login', async (req, res) => {
 
-    const dataB = await database.checkDb(db)
+    const userData = {
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    }
+
+    const foundUser = await database.getUser(userData.email, db)
+
+    const foundPassword = foundUser.password
+
+    let userToUse = JSON.parse(JSON.stringify(foundUser));
+    delete userToUse.password;
+
+    if (foundPassword === userData.password) {
+      const user_id = userToUse.id
+      req.session.user_id = user_id
+      return res.status(200).json({ message : "Login successful.", user: userToUse })
+    } else {
+      return res.status(401).json({ message: "Invalid login information" })
+    }
+  })
+
+  // router.post('/checkdb', async (req,res) => {
+
+  //   const dataB = await database.checkDb(db)
   
-    console.log('db:', dataB)
-  });
+  //   console.log('db:', dataB)
+  // });
 
   return router
 }

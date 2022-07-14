@@ -10,12 +10,6 @@ export default function RegistrationPage() {
     password: ''
   })
 
-  const checkDb = () => {
-    axios.post('http://localhost:5050/auth/checkdb', {
-      withCredentials: true,
-   })
-  }
-
   const handleChange = (e) => {
     const name = e.target.name
     const value = e.target.value
@@ -106,11 +100,6 @@ export default function RegistrationPage() {
           Register!
         </Button>
       </form>
-      <Button
-        onClick={checkDb}
-      >
-        check database
-      </Button>
     </>
   )
 }
