@@ -8,19 +8,18 @@ import LoginPage from "./ui/LoginPage";
 import { makeStyles } from "@mui/styles";
 import Navbar from "./ui/Navbar";
 
-// const useStyles = makeStyles({
-//   root: {
-//     marginTop: '80px',
-//   },
-// });
+const useStyles = makeStyles({
+  root: {
+    marginTop: '80px',
+  },
+});
 
 function App() {
 
-  // const classes = useStyles();
+  const classes = useStyles();
 
   return (
-    <div>
-    {/* <div className={classes.root}> */}
+    <div className={classes.root}>
       <header>
         <Navbar />
       </header>
