@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import {Button, Typography, AppBar, Toolbar } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 import { UserContext } from "../../context/userContext"
@@ -12,6 +13,8 @@ const useStyles = makeStyles({
 })
 
 export default function Navbar() {
+
+  let navigate = useNavigate();
 
   const classes = useStyles()
 
@@ -71,7 +74,7 @@ export default function Navbar() {
               color="secondary"
               variant='contained' 
               size='large' 
-              // onClick={() => navigate("/login")}
+              onClick={() => navigate("/login")}
             >
               Login
             </Button>
@@ -80,7 +83,7 @@ export default function Navbar() {
               style={{ marginLeft: 10, marginRight: 50}}
               variant='contained' 
               size='large' 
-              // onClick={() => navigate("/register")}
+              onClick={() => navigate("/register")}
             >
               Register
             </Button>

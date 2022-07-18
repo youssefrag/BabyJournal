@@ -27,12 +27,6 @@ function App() {
 
   const [isUserLoggedIn, setUserLoggedIn] = useState(false);
 
-  // const isLoggedIn = Cookies.get('user_id') && Cookies.get('babyjournal')
-
-  // if (Cookies.get('user_id')) {
-  //   setUserLoggedIn(true)
-  // }
-
   useEffect(() => {
     if (Cookies.get('user_id')) {
       setUserLoggedIn(true)
@@ -47,6 +41,8 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element = {<LoginPage />} />
+          <Route path="/register" element = {<RegistrationPage />} />
+          <Route path="/login" element = {<LoginPage />} />
         </Routes>
       </UserContextProvider>
     </div>
