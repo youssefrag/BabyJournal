@@ -37,7 +37,6 @@ export default function LoginPage() {
       const userId = result.data.user.id
       const userName = result.data.user.name
       setParentId(userId)
-      // setUserId(userId)
       setUserLoggedIn(true)
       // navigate("/menu")
     })
