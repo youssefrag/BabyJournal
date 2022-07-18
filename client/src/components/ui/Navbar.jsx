@@ -30,7 +30,7 @@ export default function Navbar() {
       Cookies.remove('user_id')
       setUserName(undefined)
       setUserLoggedIn(false)
-      navigate("/login")
+      navigate("/")
     })
   }
 
