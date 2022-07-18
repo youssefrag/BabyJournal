@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 import Cookies from 'js-cookie';
 
 const defaultState = {
-  userName: '',
+  userName: Cookies.get('user_name'),
   parentId: Cookies.get('user_id'),
   setUserName: () => {},
   setParentId: () => {},
@@ -18,14 +18,20 @@ export const UserContextProvider = (props) => {
   const [userContextParentId, setUserContextParentId] = useState(defaultState.parentId)
 
   const setUserName = (userName) => {
+    if (userName) {
+      Cookies.set('user_name', userName)
+    } else {
+      Cookies.remove('user_name');
+      Cookies.remove('babyjournal');
+      Cookies.remove('babyjournal.sig');
+    }
     setUserContextUserName(userName)
   }
 
   const setParentId = (id) => {
     if (id) {
       Cookies.set('user_id', id);
-    }
-    else {
+    } else {
       Cookies.remove('user_id');
       Cookies.remove('babyjournal');
       Cookies.remove('babyjournal.sig');

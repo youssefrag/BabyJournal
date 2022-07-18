@@ -36,7 +36,9 @@ module.exports = (db) => {
     delete userToUse.password;
 
     if (foundPassword === userData.password) {
+      const user_name = userToUse.name
       const user_id = userToUse.id
+      req.session.user_name = user_name
       req.session.user_id = user_id
       return res.status(200).json({ message : "Login successful.", user: userToUse })
     } else {
