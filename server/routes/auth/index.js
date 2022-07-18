@@ -46,5 +46,11 @@ module.exports = (db) => {
     }
   })
 
+  router.post('/logout', (req, res) => {
+    req.session.user_id = null;
+    req.session = null;
+    return res.status(200).json({ message : "Logout successful." })
+  });
+
   return router
 }
