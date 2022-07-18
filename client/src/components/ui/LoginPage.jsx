@@ -14,7 +14,7 @@ export default function LoginPage() {
     password:'',
   })
 
-  const { userContextParentId, setParentId } = useContext(UserContext);
+  const {userContextUserName, setUserName, userContextParentId, setParentId } = useContext(UserContext);
   const { isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
 
   const handleChange = (e) => {
@@ -33,12 +33,11 @@ export default function LoginPage() {
       withCredentials: true,
     })
     .then((result) => { 
-      // console.log('id:', result.data.user.id)
       const userId = result.data.user.id
       const userName = result.data.user.name
       setParentId(userId)
+      setUserName(userName)
       setUserLoggedIn(true)
-      // navigate("/menu")
     })
     .catch((error) => {
       console.log(error)

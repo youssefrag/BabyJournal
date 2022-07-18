@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const classes = useStyles()
 
-  const { isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
+  const {userContextUserName, setUserName, isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
 
   if (isUserLoggedIn === true) {
     return(
@@ -32,7 +32,7 @@ export default function Navbar() {
             Baby Page!
           </Button>
           <Typography variant="h4">
-            Welcome username
+            Welcome {userContextUserName}
           </Typography>
           <div>
             <Button
