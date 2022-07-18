@@ -38,6 +38,7 @@ export default function LoginPage() {
       setParentId(userId)
       setUserName(userName)
       setUserLoggedIn(true)
+      navigate('/user')
     })
     .catch((error) => {
       console.log(error)
