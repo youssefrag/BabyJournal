@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { UserContextProvider } from "../context/userContext";
 
 import { Button } from '@mui/material'
 
@@ -29,12 +30,14 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <header>
-        <Navbar />
-      </header>
-      <Routes>
-        <Route path="/" element = {<LoginPage />} />
-      </Routes>
+      <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
+        <header>
+          <Navbar />
+        </header>
+        <Routes>
+          <Route path="/" element = {<LoginPage />} />
+        </Routes>
+      </UserContextProvider>
     </div>
   );
 }

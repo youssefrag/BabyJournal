@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
+import { UserContext } from '../../context/userContext'
 import { useNavigate } from "react-router-dom";
 import {Button, TextField, Typography } from '@mui/material';
 
@@ -12,6 +13,9 @@ export default function LoginPage() {
     email:'',
     password:'',
   })
+
+  const { userContextParentId, setParentId } = useContext(UserContext);
+  const { isUserLoggedIn, setUserLoggedIn } = useContext(UserContext);
 
   const handleChange = (e) => {
     const name = e.target.name
@@ -32,9 +36,9 @@ export default function LoginPage() {
       // console.log('id:', result.data.user.id)
       const userId = result.data.user.id
       const userName = result.data.user.name
-      // setUserName(userName)
+      setParentId(userId)
       // setUserId(userId)
-      // setUserLoggedIn(true)
+      setUserLoggedIn(true)
       // navigate("/menu")
     })
     .catch((error) => {
