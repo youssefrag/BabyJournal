@@ -44,12 +44,5 @@ module.exports = (db) => {
     }
   })
 
-  // router.post('/checkdb', async (req,res) => {
-
-  //   const dataB = await database.checkDb(db)
-  
-  //   console.log('db:', dataB)
-  // });
-
   return router
 }
