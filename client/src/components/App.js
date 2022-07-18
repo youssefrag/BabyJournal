@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
@@ -25,8 +25,19 @@ function App() {
 
   const classes = useStyles();
 
-  const isLoggedIn = Cookies.get('user_id') && Cookies.get('babyjournal')
-  const [isUserLoggedIn, setUserLoggedIn] = useState(isLoggedIn);
+  const [isUserLoggedIn, setUserLoggedIn] = useState(false);
+
+  // const isLoggedIn = Cookies.get('user_id') && Cookies.get('babyjournal')
+
+  // if (Cookies.get('user_id')) {
+  //   setUserLoggedIn(true)
+  // }
+
+  useEffect(() => {
+    if (Cookies.get('user_id')) {
+      setUserLoggedIn(true)
+    }
+  }, [Cookies.get('user_id')])
 
   return (
     <div className={classes.root}>
