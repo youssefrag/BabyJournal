@@ -15,6 +15,7 @@ import LoginPage from "./ui/LoginPage";
 import { makeStyles } from "@mui/styles";
 import Navbar from "./ui/Navbar";
 import BabyList from "./ui/BabyList";
+import NewBaby from "./ui/NewBaby";
 
 const useStyles = makeStyles({
   root: {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/register" element = {<RegistrationPage />} />
           <Route path="/login" element = {<LoginPage />} />
           <Route path="/user" element = { (isUserLoggedIn) ? <BabyList /> : <LoginPage /> }/>
+          <Route path="/newbaby" element = {<NewBaby />}/>
         </Routes>
       </UserContextProvider>
     </div>
