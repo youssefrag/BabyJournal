@@ -5,14 +5,16 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { UserContextProvider } from "../context/userContext";
 
-import { Button } from '@mui/material'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 import Cookies from 'js-cookie';
 
+import { makeStyles } from "@mui/styles";
+
 import RegistrationPage from "./ui/RegistrationPage";
 import LoginPage from "./ui/LoginPage";
-
-import { makeStyles } from "@mui/styles";
 import Navbar from "./ui/Navbar";
 import BabyList from "./ui/BabyList";
 import NewBaby from "./ui/NewBaby";
@@ -37,18 +39,20 @@ function App() {
 
   return (
     <div className={classes.root}>
-      <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
-        <header>
-          <Navbar />
-        </header>
-        <Routes>
-          <Route path="/" element = { (isUserLoggedIn) ? <BabyList/> : <LoginPage />} />
-          <Route path="/register" element = {<RegistrationPage />} />
-          <Route path="/login" element = {<LoginPage />} />
-          <Route path="/user" element = { (isUserLoggedIn) ? <BabyList /> : <LoginPage /> }/>
-          <Route path="/newbaby" element = {<NewBaby />}/>
-        </Routes>
-      </UserContextProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
+          <header>
+            <Navbar />
+          </header>
+          <Routes>
+            <Route path="/" element = { (isUserLoggedIn) ? <BabyList/> : <LoginPage />} />
+            <Route path="/register" element = {<RegistrationPage />} />
+            <Route path="/login" element = {<LoginPage />} />
+            <Route path="/user" element = { (isUserLoggedIn) ? <BabyList /> : <LoginPage /> }/>
+            <Route path="/newbaby" element = {<NewBaby />}/>
+          </Routes>
+        </UserContextProvider>
+      </LocalizationProvider>
     </div>
   );
 }
