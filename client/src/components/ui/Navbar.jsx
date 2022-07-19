@@ -44,7 +44,7 @@ export default function Navbar() {
             color="secondary"
             variant='contained' 
             size='large' 
-            // onClick={() => navigate("/login")}
+            onClick={() => navigate("/user")}
           >
             Baby Page!
           </Button>
@@ -72,6 +72,14 @@ export default function Navbar() {
         color='primary'
       >
         <Toolbar className={classes.tool}>
+          <Button
+            color="secondary"
+            variant='contained' 
+            size='large' 
+            // onClick={() => navigate("/login")}
+          >
+            Baby Page!
+          </Button>
           <Typography variant="h4">
             BabyJournal
           </Typography>
