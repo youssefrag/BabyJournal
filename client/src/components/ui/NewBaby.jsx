@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { Stack, TextField } from '@mui/material';
+import { Stack, TextField, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import moment from 'moment';
 
@@ -18,7 +18,6 @@ export default function NewBaby() {
   })
 
   const handleChange = (e) => {
-    console.log(baby);
 
     const name = e.target.name
     const value = e.target.value
@@ -30,21 +29,71 @@ export default function NewBaby() {
     setDate(e.date);
  }
 
- console.log(date)
+  console.log(baby)
 
   return (
-    <Stack
-      spacing={4}
-      sx={{ width: '250px'}}
-    >
-      <DatePicker 
-        label='Date of Birth' 
-        renderInput={(params) => <TextField {...params}/>}
-        value={date}
-        onChange={(newValue) => {
-          setDate(newValue)
+    <>
+      <Typography
+        variant='h4'
+        sx={{
+          marginBottom: '40px',
+          marginLeft: '40px'
         }}
-      />
-    </Stack>
+      >
+        Register your baby
+      </Typography>
+      <Stack
+        spacing={4}
+        sx={{ 
+          width: '350px',
+          marginLeft: '40px'
+        }}
+        >
+        <TextField 
+          type="text"
+          label="First name"
+          name="first_name"
+          color="secondary"
+          required
+          value={baby.first_name}
+          onChange={handleChange}
+        />
+        <TextField 
+          type="text"
+          label="Last name"
+          name="last_name"
+          color="secondary"
+          required
+          value={baby.last}
+          onChange={handleChange}
+        />
+        <DatePicker 
+          label='Date of Birth' 
+          renderInput={(params) => <TextField {...params}/>}
+          value={date}
+          onChange={(newValue) => {
+            setDate(newValue)
+          }}
+        />
+        <TextField 
+          type="text"
+          label="Birth Location"
+          name="birth_location"
+          color="secondary"
+          required
+          value={baby.birth_location}
+          onChange={handleChange}
+        />
+        <TextField 
+          type="text"
+          label="Picture Url"
+          name="picture_url"
+          color="secondary"
+          required
+          value={baby.picture_url}
+          onChange={handleChange}
+        />        
+      </Stack>
+    </>
   )
 }
