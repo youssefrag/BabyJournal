@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 import { Stack, TextField, Typography, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
@@ -25,9 +26,7 @@ export default function NewBaby() {
   }
 
   const [date, setDate] = useState(() => moment())
-  const handleDateChange = (e) => {
-    setDate(e.date);
- }
+
 
   const handleSubmit = () => {
     const { first_name, last_name, birth_location } = baby
@@ -37,6 +36,17 @@ export default function NewBaby() {
     }
     baby['date_of_birth'] = date.toString().slice(0, 15)
     console.log(baby)
+
+    axios.post('http://localhost:5050/baby/', baby, {
+      withCredentials: true,
+    })
+    .then((result) => { 
+      console.log(result.data)
+      navigate("/user")
+      })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   return (
