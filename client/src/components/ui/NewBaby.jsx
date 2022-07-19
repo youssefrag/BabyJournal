@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { Stack, TextField, Typography } from '@mui/material';
+import { Stack, TextField, Typography, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import moment from 'moment';
 
@@ -29,7 +29,15 @@ export default function NewBaby() {
     setDate(e.date);
  }
 
-  console.log(baby)
+  const handleSubmit = () => {
+    const { first_name, last_name, birth_location } = baby
+    if ( !first_name || !last_name || !birth_location || !date ) {
+      alert('Empty values!')
+      return
+    }
+    baby['date_of_birth'] = date.toString().slice(0, 15)
+    console.log(baby)
+  }
 
   return (
     <>
@@ -92,7 +100,17 @@ export default function NewBaby() {
           required
           value={baby.picture_url}
           onChange={handleChange}
-        />        
+        />
+        <Button
+          variant='contained'
+          size='large'
+          onClick={handleSubmit}
+          sx={{
+            width: '200px'
+          }}
+        >
+          Register baby
+        </Button>      
       </Stack>
     </>
   )
