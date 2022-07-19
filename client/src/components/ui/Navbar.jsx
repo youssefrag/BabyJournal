@@ -73,6 +73,7 @@ export default function Navbar() {
       >
         <Toolbar className={classes.tool}>
           <Button
+            disabled='true'
             color="secondary"
             variant='contained' 
             size='large' 
