@@ -42,7 +42,7 @@ function App() {
           <Navbar />
         </header>
         <Routes>
-          <Route path="/" element = {<LoginPage />} />
+          <Route path="/" element = { (isUserLoggedIn) ? <BabyList/> : <LoginPage />} />
           <Route path="/register" element = {<RegistrationPage />} />
           <Route path="/login" element = {<LoginPage />} />
           <Route path="/user" element = { (isUserLoggedIn) ? <BabyList /> : <LoginPage /> }/>
