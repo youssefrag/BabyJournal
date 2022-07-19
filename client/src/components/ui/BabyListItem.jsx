@@ -1,17 +1,9 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
-
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
 
 export default function BabyListItem(props) {
 
   const { name, image, id, goToNewBabyPage } = props
-
-  let navigate = useNavigate();
-
-  const goToNewBabyPage = () => {
-    navigate('/newbaby')
-  }
 
   if (name) {
     return (
@@ -20,22 +12,22 @@ export default function BabyListItem(props) {
       >
         { (image)
           ? <img src={image} />
-          : <img src='/../public/baby-avat.webp' />
+          : <img src='/baby-avatar.webp' />
         }
       </div>
     )
   } else {
     return(
-      <div
+      <Box
         onClick={goToNewBabyPage}
       >
-        <img src='/../public/baby-avat.webp'/>
+        <img src='/baby-avatar.webp'/>
         <Typography
           variant='h4'
         >
           New Baby?
         </Typography>
-      </div>
+      </Box>
     )
   }
 }
