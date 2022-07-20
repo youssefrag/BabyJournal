@@ -18,6 +18,7 @@ import LoginPage from "./ui/LoginPage";
 import Navbar from "./ui/Navbar";
 import BabyList from "./ui/BabyList";
 import NewBaby from "./ui/NewBaby";
+import BabyDetailsPage from "./ui/BabyDetailsPage";
 
 const useStyles = makeStyles({
   root: {
@@ -49,7 +50,8 @@ function App() {
             <Route path="/register" element = {<RegistrationPage />} />
             <Route path="/login" element = {<LoginPage />} />
             <Route path="/user" element = { (isUserLoggedIn) ? <BabyList /> : <LoginPage /> }/>
-            <Route path="/newbaby" element = {<NewBaby />}/>
+            <Route path="/newbaby" element = {<NewBaby /> }/>
+            <Route path="/babydetails/:id" element= { (!isUserLoggedIn) ? <Navigate replace to="/login" /> : <BabyDetailsPage /> } />
           </Routes>
         </UserContextProvider>
       </LocalizationProvider>
