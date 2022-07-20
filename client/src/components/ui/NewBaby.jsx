@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { UserContext } from '../../context/userContext'
 
 import { Stack, TextField, Typography, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
@@ -8,9 +9,12 @@ import moment from 'moment';
 
 export default function NewBaby() {
 
+  const { userContextParentId } = useContext(UserContext);
+
   let navigate = useNavigate();
 
   const [baby, setBaby] = useState({
+    parent_id: null,
     first_name: '',
     last_name: '',
     date_of_birth: '',
@@ -34,6 +38,7 @@ export default function NewBaby() {
       alert('Empty values!')
       return
     }
+    baby['parent_id'] = userContextParentId
     baby['date_of_birth'] = date.toString().slice(0, 15)
     console.log(baby)
 

@@ -16,7 +16,7 @@ CREATE TABLE baby(
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   date_of_birth VARCHAR(255) NOT NULL,
-  born_at VARCHAR(255),
+  birth_location VARCHAR(255),
   picture_url VARCHAR(255)
 );
 

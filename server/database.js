@@ -34,7 +34,7 @@ const addBaby = function (parentId, firstName, lastName, dateOfBirth, placeOfBir
   return pool
     .query(
       `
-        INSERT INTO baby (parent_id, first_name, last_name, date_of_birth, born_at, picture_url) VALUES ($1, $2, $3, $4, $5, $6);
+        INSERT INTO baby (parent_id, first_name, last_name, date_of_birth, birth_location, picture_url) VALUES ($1, $2, $3, $4, $5, $6);
       `, [parentId, firstName, lastName, dateOfBirth, placeOfBirth, pictureUrl]
     )    
     .then((result) => {
@@ -58,4 +58,4 @@ const checkDb = function(pool) {
     })
 }
 
-module.exports = { addUser, getUser, checkDb }
+module.exports = { addUser, getUser, addBaby, checkDb }
