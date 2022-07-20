@@ -12,12 +12,12 @@ CREATE TABLE parent(
 
 CREATE TABLE baby(
   id SERIAL PRIMARY KEY NOT NULL,
-  parent_id INT REFERENCES parent(id) ON DELETE CASCADE,
+  parent_id INT,
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   date_of_birth VARCHAR(255) NOT NULL,
   birth_location VARCHAR(255),
-  picture_url VARCHAR(255)
+  picture_url VARCHAR(500)
 );
 
 CREATE TABLE event(
