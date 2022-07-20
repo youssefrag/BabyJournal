@@ -1,4 +1,4 @@
-const addUser = function (name, email, password, pool) {
+const addUser = function(name, email, password, pool) {
   return pool
     .query(
       `INSERT INTO parent (name, email, password) VALUES ($1, $2, $3) RETURNING *;`, [name, email, password]
@@ -12,7 +12,7 @@ const addUser = function (name, email, password, pool) {
     })
 }
 
-const getUser = function (email, pool) {
+const getUser = function(email, pool) {
   return pool
     .query(
       `
@@ -30,7 +30,7 @@ const getUser = function (email, pool) {
     })
 }
 
-const addBaby = function (parentId, firstName, lastName, dateOfBirth, placeOfBirth, pictureUrl, pool) {
+const addBaby = function(parentId, firstName, lastName, dateOfBirth, placeOfBirth, pictureUrl, pool) {
   return pool
     .query(
       `
@@ -39,6 +39,23 @@ const addBaby = function (parentId, firstName, lastName, dateOfBirth, placeOfBir
     )    
     .then((result) => {
       console.log('result:', result.rows)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+const getBabiesForParent = function(parentId, pool) {
+  return pool
+    .query(
+      `
+        SELECT * FROM baby
+        WHERE baby.parent_id = $1;
+      `, [parentId]
+    )
+    .then((result) => {
+      console.log(result.rows)
+      return result.rows
     })
     .catch((err) => {
       console.log(err.message)
@@ -58,4 +75,4 @@ const checkDb = function(pool) {
     })
 }
 
-module.exports = { addUser, getUser, addBaby, checkDb }
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, checkDb }
