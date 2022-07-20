@@ -46,7 +46,6 @@ export default function NewBaby() {
       withCredentials: true,
     })
     .then((result) => { 
-      console.log(result.data)
       navigate("/user")
       })
     .catch((error) => {

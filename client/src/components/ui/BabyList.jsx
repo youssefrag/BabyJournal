@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
+
 import axios from 'axios';
 import BabyListItem from "./BabyListItem";
 import { Box } from "@mui/system";
@@ -28,14 +34,18 @@ export default function BabyList() {
 
   babyListItems = babies.map((baby) => {
     return(
-      <div class="col-3 d-flex justify-content-center">
+      <Box
+        sx={{
+          marginBottom: '100px'
+        }}
+      >
         <BabyListItem
           key={baby.id}
           id={baby.id}
           name={baby.first_name}
           image={baby.picture_url}
         />
-      </div>
+      </Box>
     )
   })
 
@@ -46,9 +56,15 @@ export default function BabyList() {
   }
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginLeft: '20px'
+      }}
+    >
       {babyListItems}
       <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
     </Box>
   )
+
+
 }
