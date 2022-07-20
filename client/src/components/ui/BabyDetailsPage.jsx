@@ -1,7 +1,11 @@
 import React from 'react'
+import { useParams } from "react-router-dom";
 
 export default function BabyDetailsPage() {
+
+  const { id } = useParams()
+
   return (
-    <div>BabyDetailsPage</div>
+    <div>{id}</div>
   )
 }
