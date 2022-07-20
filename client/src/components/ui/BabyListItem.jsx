@@ -7,14 +7,17 @@ export default function BabyListItem(props) {
 
   if (name) {
     return (
-      <div
+      <Box
         // onClick={goToBabyDetailsPage}
       >
+        <Typography>
+          {name}
+        </Typography>
         { (image)
           ? <img src={image} />
           : <img src='/baby-avatar.webp' />
         }
-      </div>
+      </Box>
     )
   } else {
     return(

@@ -24,12 +24,30 @@ export default function BabyList() {
     })
   }, [])
 
+  let babyListItems = []
+
+  babyListItems = babies.map((baby) => {
+    return(
+      <div class="col-3 d-flex justify-content-center">
+        <BabyListItem
+          key={baby.id}
+          id={baby.id}
+          name={baby.first_name}
+          image={baby.picture_url}
+        />
+      </div>
+    )
+  })
+
+
+
   const goToNewBabyPage = () => {
     navigate('/newbaby')
   }
 
   return (
     <Box>
+      {babyListItems}
       <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
     </Box>
   )

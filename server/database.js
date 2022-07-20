@@ -54,7 +54,6 @@ const getBabiesForParent = function(parentId, pool) {
       `, [parentId]
     )
     .then((result) => {
-      console.log(result.rows)
       return result.rows
     })
     .catch((err) => {

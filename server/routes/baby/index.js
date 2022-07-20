@@ -22,9 +22,8 @@ module.exports = (db) => {
 
   router.get('/babies_of_parent/:parent_id', async (req, res) => {
     const parentId = req.params.parent_id;
-    console.log('parent id:', parentId)
     const babyList = await database.getBabiesForParent(parentId, db)
-    console.log(babyList)
+    res.status(200).json(babyList)
   })
 
 
