@@ -5,6 +5,7 @@ const BodyParser = require('body-parser')
 const CookieSession = require('cookie-session')
 const PORT = 5050;
 const authRoutes = require('./routes/auth')
+const babyRoutes = require('./routes/baby')
 
 const { Pool } = require('pg');
 const dbParams = require("./lib/db.js")
@@ -33,6 +34,7 @@ App.use(CookieSession({
 }));
 
 App.use('/auth', authRoutes(db));
+App.use('/baby', babyRoutes(db));
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
