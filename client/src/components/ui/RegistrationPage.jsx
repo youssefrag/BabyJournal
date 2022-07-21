@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 import {Button, TextField } from '@mui/material';
 
 export default function RegistrationPage() {
+
+  let navigate = useNavigate();
 
   const [user, setUser] = useState({
     name: '',
@@ -27,7 +30,7 @@ export default function RegistrationPage() {
        withCredentials: true,
     })
     .then((result) => { 
-       console.log(result.data)
+       navigate('/login')
     })
     .catch((error) => {
        console.log(error)

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { Typography, Box } from '@mui/material';
 import { useParams } from "react-router-dom";
 
 export default function BabyDetailsPage() {
@@ -40,13 +41,22 @@ export default function BabyDetailsPage() {
       withCredentials: true,
     })
     .then((result) => {
-      setBabyDetails(result.data)
+      setBabyDetails(result.data[0])
     })
   }, [])
 
-  console.log(babyDetails)
-
   return (
-    <div>{id}</div>
+    <Box>
+      <Typography
+        variant='h1'
+      >
+        {babyDetails.first_name} {babyDetails.last_name}
+      </Typography>
+      <Typography
+        variant='h4'
+      >
+        Bortn at {babyDetails.date_of_birth} in {babyDetails.birth_location}
+      </Typography>
+    </Box>
   )
 }
