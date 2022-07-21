@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
 export default function BabyDetailsPage() {
@@ -29,6 +29,8 @@ export default function BabyDetailsPage() {
     {name: "ounce", value: "oz"},
     {name: "pound", value: "lb"}
   ]
+
+  const [babyDetails, setBabyDetails] = useState({})
 
   const { id } = useParams()
 
