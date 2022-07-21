@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import { useParams } from "react-router-dom";
 
 export default function BabyDetailsPage() {
@@ -33,6 +34,15 @@ export default function BabyDetailsPage() {
   const [babyDetails, setBabyDetails] = useState({})
 
   const { id } = useParams()
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/baby/${id}`, {
+      withCredentials: true,
+    })
+    .then((result) => {
+      setBabyDetails(result.data)
+    })
+  }, [])
 
   return (
     <div>{id}</div>
