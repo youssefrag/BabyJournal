@@ -46,17 +46,36 @@ export default function BabyDetailsPage() {
   }, [])
 
   return (
-    <Box>
-      <Typography
-        variant='h1'
+    <Box
+      sx={{
+        display: 'flex',
+        marginLeft: '30px'
+      }}
+    >
+      <img 
+        src={babyDetails.picture_url}
+        style={{
+          width: '70px',
+          height: '80px',
+          marginTop: '40px'
+        }}
+      />
+      <Box
+        sx={{
+          marginLeft: '30px'
+        }}
       >
-        {babyDetails.first_name} {babyDetails.last_name}
-      </Typography>
-      <Typography
-        variant='h4'
-      >
-        Bortn at {babyDetails.date_of_birth} in {babyDetails.birth_location}
-      </Typography>
+        <Typography
+          variant='h1'
+        >
+          {babyDetails.first_name} {babyDetails.last_name}
+        </Typography>
+        <Typography
+          variant='h4'
+        >
+          Born at {babyDetails.date_of_birth} in {babyDetails.birth_location}
+        </Typography>
+      </Box>
     </Box>
   )
 }
