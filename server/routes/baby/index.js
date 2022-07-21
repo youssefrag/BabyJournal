@@ -26,6 +26,12 @@ module.exports = (db) => {
     res.status(200).json(babyList)
   })
 
+  router.get('/:baby_id', async (req, res) => {
+    const babyId = req.params.baby_id
+    const babyDetails = await database.getBabyDetails(babyId, db)
+    res.status(200).json(babyDetails)
+  })
+
 
   return router
 }

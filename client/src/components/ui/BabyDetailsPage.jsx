@@ -36,13 +36,15 @@ export default function BabyDetailsPage() {
   const { id } = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/baby/${id}`, {
+    axios.get(`http://localhost:5050/baby/${id}`, {
       withCredentials: true,
     })
     .then((result) => {
       setBabyDetails(result.data)
     })
   }, [])
+
+  console.log(babyDetails)
 
   return (
     <div>{id}</div>

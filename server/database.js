@@ -61,17 +61,20 @@ const getBabiesForParent = function(parentId, pool) {
     })
 }
 
-const checkDb = function(pool) {
+const getBabyDetails = function(babyId, pool) {
   return pool
     .query(
-      `SELECT current_database();`
+      `
+        SELECT * FROM baby
+        WHERE baby.id = $1;
+      `, [babyId]
     )
     .then((result) => {
-      console.log('result:', result.rows)
+      return result.rows
     })
     .catch((err) => {
       console.log(err.message)
     })
 }
 
-module.exports = { addUser, getUser, addBaby, getBabiesForParent, checkDb }
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails }
