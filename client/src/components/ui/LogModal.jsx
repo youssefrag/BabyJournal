@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { Typography, Box, TextField, Button } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers';
+
 import moment from 'moment';
 
 export default function LogEventModal(props) {
@@ -11,7 +12,7 @@ export default function LogEventModal(props) {
   const [event, setEvent] = useState({
     type: eventType,
     amount: null,
-    date: moment()
+    date: ''
   })
 
   const [date, setDate] = useState(() => moment())
@@ -20,7 +21,7 @@ export default function LogEventModal(props) {
     const name = e.target.name
     const value = e.target.value
     setEvent(prev => ({...event, [name]: value}))
-    console.log(event)
+    console.log(date.toString().slice(0, 15))
   }
 
   return (
