@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Typography, Box } from '@mui/material';
+
+import { Typography, Box, Button } from '@mui/material';
+import { Modal } from '@mui/material';
+
 import { useParams } from "react-router-dom";
 
 export default function BabyDetailsPage() {
 
+  
+  
+  const [openTempLog, setOpenTempLog] = useState(false)
+  const handleOpenTempLog = () => setOpenTempLog(true)
+  const handleCloseTempLog = () => setOpenTempLog(false)
+  
+  console.log(openTempLog)
+  
   const LogTypes = {
     HEAD: "head",
     HEIGHT: "height",
@@ -89,6 +100,13 @@ export default function BabyDetailsPage() {
         >
           Log {babyDetails.first_name}'s health
         </Typography>
+        <Box>
+          <Button
+            onClick={handleOpenTempLog}
+          >
+            Log temperature
+          </Button>
+        </Box>
         <Typography
           variant='h4'
         >
