@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS parent CASCADE;
 DROP TABLE IF EXISTS baby CASCADE;
 DROP TABLE IF EXISTS event CASCADE;
+DROP TABLE IF EXISTS measurement CASCADE;
 
 
 CREATE TABLE parent(
@@ -25,7 +26,15 @@ CREATE TABLE event(
   baby_id INT REFERENCES baby(id) ON DELETE CASCADE,
   event_type VARCHAR(255) NOT NULL,
   event_detail VARCHAR NOT NULL,
-  event_datetime DATE
+  event_date DATE
+);
+
+CREATE TABLE measurement(
+  id SERIAL PRIMARY KEY NOT NULL,
+  baby_id INT REFERENCES baby(id) ON DELETE CASCADE,
+  measurement_type VARCHAR(255) NOT NULL,
+  measurement_detail VARCHAR NOT NULL,
+  measurement_date DATE
 );
 
 
