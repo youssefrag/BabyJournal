@@ -46,37 +46,55 @@ export default function BabyDetailsPage() {
   }, [])
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        marginLeft: '30px',
-        border: 1
-      }}
-    >
-      <img 
-        src={babyDetails.picture_url}
-        style={{
-          width: '70px',
-          height: '80px',
-          marginTop: '40px'
-        }}
-      />
+    <>
       <Box
         sx={{
-          marginLeft: '30px'
+          display: 'flex',
+          marginLeft: '30px',
+          border: 1
+        }}
+      >
+        <img 
+          src={babyDetails.picture_url}
+          style={{
+            width: '70px',
+            height: '80px',
+            marginTop: '40px'
+          }}
+        />
+        <Box
+          sx={{
+            marginLeft: '30px'
+          }}
+        >
+          <Typography
+            variant='h1'
+          >
+            {babyDetails.first_name} {babyDetails.last_name}
+          </Typography>
+          <Typography
+            variant='h4'
+          >
+            Born at {babyDetails.date_of_birth} in {babyDetails.birth_location}
+          </Typography>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          border: 1
         }}
       >
         <Typography
-          variant='h1'
+          variant='h4'
         >
-          {babyDetails.first_name} {babyDetails.last_name}
+          Log {babyDetails.first_name}'s health
         </Typography>
         <Typography
           variant='h4'
         >
-          Born at {babyDetails.date_of_birth} in {babyDetails.birth_location}
+          Log {babyDetails.first_name}'s growth
         </Typography>
       </Box>
-    </Box>
+    </>
   )
 }
