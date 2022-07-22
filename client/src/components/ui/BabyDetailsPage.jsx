@@ -41,20 +41,12 @@ export default function BabyDetailsPage() {
   }
   const lengthUnits = [
     {name: "Centimeter", value: "cm"}, 
-    {name: "Millimeter", value: "mm"},
-    {name: "Inch", value: "in"},
-    {name: "Foot", value: "ft"}
   ]
   const temperatureUnits = [
     {name: "Celcius", value: "C"}, 
-    {name: "Farenheit", value: "F"}
   ]
   const weightUnits = [
     {name: "kilogram", value: "kg"},
-    {name: "gram", value: "g"}, 
-    {name: "milligram", value: "mg"},
-    {name: "ounce", value: "oz"},
-    {name: "pound", value: "lb"}
   ]
 
   const [babyDetails, setBabyDetails] = useState({})
