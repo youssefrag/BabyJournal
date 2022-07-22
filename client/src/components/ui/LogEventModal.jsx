@@ -10,13 +10,12 @@ import axios from 'axios';
 
 export default function LogEventModal(props) {
 
-  const { eventType, babyId, handleCloseTempLog } = props
+  const { eventType, babyId, handleCloseTempLog, handleCloseVacLog } = props
 
   let navigate = useNavigate();
 
   const [event, setEvent] = useState({
     type: eventType,
-    amount: null,
     date: '',
     details: ''
   })
@@ -30,43 +29,80 @@ export default function LogEventModal(props) {
   }
 
   const handleSubmit = () => {
-    const { type, amount } = event
-    if ( !type || !amount) {
-      alert('Empty values!')
-      return
+    const { type, details } = event
+    if (!details) {
+      alert('Empty values')
     }
     event['date'] = date.toString().slice(0, 15)
     if (type === 'temperature') {
-      event['details'] = `${event.amount} degrees celcius`
+      event['details'] = `${event.details} degrees celcius`
     }
     console.log(event)
     axios.post(`http://localhost:5050/log/event/${babyId}`, event, {
       withCredentials: true,
     })
     .then(() => {
-      handleCloseTempLog()
+      if (type === 'temperature') {
+        handleCloseTempLog()
+      } else if (type === 'vaccine') {
+        handleCloseVacLog()
+      }
     })
     .catch((err) => {
       console.log(err.message)
     })
   }
 
-  return (
-    <>
-    <Typography>
-      log {eventType} here
-    </Typography>
-    <Box>
-      <TextField 
-        type="number"
-        label="Amount in Celcius"
-        name='amount'
-        value={event.amount}
-        onChange={handleChange}
-        InputProps={{
-          inputProps: { min: 0 }
-        }}
-      />
+
+  if (eventType === 'temperature') {
+    return (
+      <>
+        <Typography>
+          log {eventType} here
+        </Typography>
+        <Box>
+          <TextField 
+            type="number"
+            label="Amount in Celcius"
+            name='details'
+            value={event.details}
+            onChange={handleChange}
+            InputProps={{
+              inputProps: { min: 0 }
+            }}
+          />
+            <DatePicker 
+              label='Date' 
+              renderInput={(params) => <TextField {...params}/>}
+              value={date}
+              onChange={(newValue) => {
+                setDate(newValue)
+              }}
+            />
+        </Box>
+        <Button
+          variant='contained'
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+      </>
+    )
+  } else {
+    return(
+      <>
+        <Typography>
+          log {eventType} here
+        </Typography>
+        <Box>
+          <TextField 
+            type='text'
+            label="Details"
+            name='details'
+            value={event.details}
+            onChange={handleChange}
+          />
+        </Box>
         <DatePicker 
           label='Date' 
           renderInput={(params) => <TextField {...params}/>}
@@ -75,13 +111,13 @@ export default function LogEventModal(props) {
             setDate(newValue)
           }}
         />
-    </Box>
-    <Button
-      variant='contained'
-      onClick={handleSubmit}
-    >
-      Submit
-    </Button>
-    </>
-  )
+        <Button
+          variant='contained'
+          onClick={handleSubmit}
+        >
+          Submit
+        </Button>
+      </>
+    )
+  }
 }

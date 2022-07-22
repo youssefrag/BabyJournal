@@ -27,6 +27,10 @@ export default function BabyDetailsPage() {
   const [openTempLog, setOpenTempLog] = useState(false)
   const handleOpenTempLog = () => setOpenTempLog(true)
   const handleCloseTempLog = () => setOpenTempLog(false)
+
+  const [openVacLog, setOpenVacLog] = useState(false)
+  const handleOpenVacLog = () => setOpenVacLog(true)
+  const handleCloseVacLog = () => setOpenVacLog(false)
   
   const LogTypes = {
     HEAD: "head",
@@ -127,6 +131,28 @@ export default function BabyDetailsPage() {
               />
             </Box>
 
+          </Modal>
+          <Button
+            variant='contained'
+            onClick={handleOpenVacLog}
+          >
+            Vaccine
+          </Button>
+          <Modal
+            open={openVacLog}
+            onClose={handleCloseVacLog}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box
+              sx={style}
+            >
+              <LogEventModal 
+                eventType="vaccine"
+                babyId={id}
+                handleCloseVacLog={handleCloseVacLog}
+              />
+            </Box>
           </Modal>
         </Box>
         <Typography
