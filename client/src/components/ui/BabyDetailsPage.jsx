@@ -49,7 +49,8 @@ export default function BabyDetailsPage() {
     <Box
       sx={{
         display: 'flex',
-        marginLeft: '30px'
+        marginLeft: '30px',
+        border: 1
       }}
     >
       <img 
