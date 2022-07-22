@@ -77,4 +77,16 @@ const getBabyDetails = function(babyId, pool) {
     })
 }
 
-module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails }
+const addEventLog = function(babyId, type, details, date, pool) {
+  return pool
+    .query(
+      `
+        INSERT INTO event (baby_id, event_type, event_detail, event_date) VALUES ($1, $2, $3, $4);
+      `, [babyId, type, details, date]
+    )
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog }
