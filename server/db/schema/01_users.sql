@@ -33,7 +33,7 @@ CREATE TABLE measurement(
   id SERIAL PRIMARY KEY NOT NULL,
   baby_id INT REFERENCES baby(id) ON DELETE CASCADE,
   measurement_type VARCHAR(255) NOT NULL,
-  measurement_detail VARCHAR NOT NULL,
+  measurement_amount VARCHAR NOT NULL,
   measurement_date DATE
 );
 

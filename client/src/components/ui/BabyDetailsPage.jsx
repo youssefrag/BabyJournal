@@ -28,8 +28,6 @@ export default function BabyDetailsPage() {
   const handleOpenTempLog = () => setOpenTempLog(true)
   const handleCloseTempLog = () => setOpenTempLog(false)
   
-  console.log(openTempLog)
-
   const LogTypes = {
     HEAD: "head",
     HEIGHT: "height",
@@ -125,6 +123,7 @@ export default function BabyDetailsPage() {
               <LogModal 
                 eventType="temperature"
                 babyId={id}
+                handleCloseTempLog={handleCloseTempLog}
               />
             </Box>
 

@@ -38,7 +38,7 @@ const addBaby = function(parentId, firstName, lastName, dateOfBirth, placeOfBirt
       `, [parentId, firstName, lastName, dateOfBirth, placeOfBirth, pictureUrl]
     )    
     .then((result) => {
-      console.log('result:', result.rows)
+      // console.log('result:', result.rows)
     })
     .catch((err) => {
       console.log(err.message)

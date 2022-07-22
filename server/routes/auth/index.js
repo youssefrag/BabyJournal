@@ -5,7 +5,6 @@ const database = require('../../database')
 module.exports = (db) => {
 
   router.post('/register', async (req,res) => {
-    console.log(req.body)
 
     const userData = {
         name: req.body.name,

@@ -1,13 +1,18 @@
 import { useState } from 'react'
 
+import { useNavigate } from "react-router-dom";
+
 import { Typography, Box, TextField, Button } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers';
 
 import moment from 'moment';
+import axios from 'axios';
 
 export default function LogEventModal(props) {
 
-  const { eventType, babyId } = props
+  const { eventType, babyId, handleCloseTempLog } = props
+
+  let navigate = useNavigate();
 
   const [event, setEvent] = useState({
     type: eventType,
@@ -30,7 +35,15 @@ export default function LogEventModal(props) {
       return
     }
     event['date'] = date.toString().slice(0, 15)
-    console.log(event)
+    axios.post(`http://localhost:5050/log/event/${babyId}`, event, {
+      withCredentials: true,
+    })
+    .then(() => {
+      handleCloseTempLog()
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
   }
 
   return (

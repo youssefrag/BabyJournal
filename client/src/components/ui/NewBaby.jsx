@@ -40,14 +40,13 @@ export default function NewBaby() {
     }
     baby['parent_id'] = userContextParentId
     baby['date_of_birth'] = date.toString().slice(0, 15)
-    console.log(baby)
 
     axios.post('http://localhost:5050/baby/new', baby, {
       withCredentials: true,
     })
     .then((result) => { 
       navigate("/user")
-      })
+    })
     .catch((error) => {
       console.log(error)
     })
