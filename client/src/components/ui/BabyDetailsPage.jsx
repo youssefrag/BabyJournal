@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-import LogEventModal from './LogEventModal';
+import LogModal from './LogModal';
 
 import { Typography, Box, Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -130,7 +130,7 @@ export default function BabyDetailsPage() {
             <Box
               sx={style}
             >
-              <LogEventModal eventType="temperature" />
+              <LogModal eventType="temperature" />
             </Box>
 
           </Modal>
