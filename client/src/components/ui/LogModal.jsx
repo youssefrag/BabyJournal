@@ -11,6 +11,7 @@ export default function LogEventModal(props) {
   const [event, setEvent] = useState({
     type: eventType,
     amount: null,
+    date: moment()
   })
 
   const [date, setDate] = useState(() => moment())
