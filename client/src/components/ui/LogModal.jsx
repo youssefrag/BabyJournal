@@ -7,7 +7,7 @@ import moment from 'moment';
 
 export default function LogEventModal(props) {
 
-  const { eventType } = props
+  const { eventType, babyId } = props
 
   const [event, setEvent] = useState({
     type: eventType,
@@ -21,7 +21,16 @@ export default function LogEventModal(props) {
     const name = e.target.name
     const value = e.target.value
     setEvent(prev => ({...event, [name]: value}))
-    console.log(date.toString().slice(0, 15))
+  }
+
+  const handleSubmit = () => {
+    const { type, amount } = event
+    if ( !type || !amount) {
+      alert('Empty values!')
+      return
+    }
+    event['date'] = date.toString().slice(0, 15)
+    console.log(event)
   }
 
   return (
@@ -51,6 +60,7 @@ export default function LogEventModal(props) {
     </Box>
     <Button
       variant='contained'
+      onClick={handleSubmit}
     >
       Submit
     </Button>

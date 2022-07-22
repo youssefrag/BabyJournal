@@ -122,7 +122,10 @@ export default function BabyDetailsPage() {
             <Box
               sx={style}
             >
-              <LogModal eventType="temperature" />
+              <LogModal 
+                eventType="temperature"
+                babyId={id}
+              />
             </Box>
 
           </Modal>
