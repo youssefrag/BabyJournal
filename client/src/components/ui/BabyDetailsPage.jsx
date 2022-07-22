@@ -31,6 +31,10 @@ export default function BabyDetailsPage() {
   const [openVacLog, setOpenVacLog] = useState(false)
   const handleOpenVacLog = () => setOpenVacLog(true)
   const handleCloseVacLog = () => setOpenVacLog(false)
+
+  const [openMedLog, setOpenMedLog] = useState(false)
+  const handleOpenMedLog = () => setOpenMedLog(true)
+  const handleCloseMedLog = () => setOpenMedLog(false)
   
   const LogTypes = {
     HEAD: "head",
@@ -39,7 +43,6 @@ export default function BabyDetailsPage() {
     TEMPERATURE: "temperature",
     MEDICINE: "medicine",
     VACCINE: "vaccine",
-    APPOINTMENT: "appointment"
   }
   const lengthUnits = [
     {name: "Centimeter", value: "cm"}, 
@@ -151,6 +154,28 @@ export default function BabyDetailsPage() {
                 eventType="vaccine"
                 babyId={id}
                 handleCloseVacLog={handleCloseVacLog}
+              />
+            </Box>
+          </Modal>
+          <Button
+            variant='contained'
+            onClick={handleOpenMedLog}
+          >
+            Medicie
+          </Button>
+          <Modal
+            open={openMedLog}
+            onClose={handleCloseMedLog}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box
+              sx={style}
+            >
+              <LogEventModal 
+                eventType="medicine"
+                babyId={id}
+                handleCloseMedLog={handleCloseMedLog}
               />
             </Box>
           </Modal>

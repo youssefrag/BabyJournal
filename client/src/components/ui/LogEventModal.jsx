@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export default function LogEventModal(props) {
 
-  const { eventType, babyId, handleCloseTempLog, handleCloseVacLog } = props
+  const { eventType, babyId, handleCloseTempLog, handleCloseVacLog, handleCloseMedLog } = props
 
   let navigate = useNavigate();
 
@@ -46,6 +46,8 @@ export default function LogEventModal(props) {
         handleCloseTempLog()
       } else if (type === 'vaccine') {
         handleCloseVacLog()
+      } else if (type === 'medicine') {
+        handleCloseMedLog()
       }
     })
     .catch((err) => {
