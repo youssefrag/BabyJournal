@@ -7,9 +7,16 @@ export default function LogEventModal(props) {
   const { eventType } = props
 
   const [event, setEvent] = useState({
-    email:'',
-    password:'',
+    type: eventType,
+    amount: null,
   })
+
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+    setEvent(prev => ({...event, [name]: value}))
+    console.log(event)
+  }
 
   return (
     <>
@@ -21,6 +28,8 @@ export default function LogEventModal(props) {
         type="number"
         label="Amount"
         name='amount'
+        value={event.amount}
+        onChange={handleChange}
         InputProps={{
           inputProps: { min: 0 }
         }}
