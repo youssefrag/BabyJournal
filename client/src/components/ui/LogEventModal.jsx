@@ -17,7 +17,8 @@ export default function LogEventModal(props) {
   const [event, setEvent] = useState({
     type: eventType,
     amount: null,
-    date: ''
+    date: '',
+    details: ''
   })
 
   const [date, setDate] = useState(() => moment())
@@ -35,6 +36,10 @@ export default function LogEventModal(props) {
       return
     }
     event['date'] = date.toString().slice(0, 15)
+    if (type === 'temperature') {
+      event['details'] = `${event.amount} degrees celcius`
+    }
+    console.log(event)
     axios.post(`http://localhost:5050/log/event/${babyId}`, event, {
       withCredentials: true,
     })
