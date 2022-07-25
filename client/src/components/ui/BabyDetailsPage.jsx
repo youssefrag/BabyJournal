@@ -135,7 +135,7 @@ export default function BabyDetailsPage() {
     .then((result) => {
       setEventsForDate(result.data)
     })
-  }, [selectedDate])
+  }, [selectedDate, refreshState])
 
   const getHeadLogs = (logs) => {
     let headLogs = []
