@@ -18,5 +18,10 @@ module.exports = (db) => {
     return res.status(200).json({ message : "Measurement logged successfully."})
   })
 
+  router.get('/measurement/:baby_id', async (req,res) => {
+    const baby_id = req.params.baby_id
+    
+  })
+
   return router
 }

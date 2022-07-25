@@ -35,7 +35,6 @@ export default function LogGrowthModal(props) {
       return
     }
     measurement['date'] = date.toString().slice(0, 15)
-    console.log(measurement)
     axios.post(`http://localhost:5050/log/measurement/${babyId}`, measurement, {
       withCredentials: true,
     })

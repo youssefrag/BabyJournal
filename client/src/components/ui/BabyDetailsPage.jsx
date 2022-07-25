@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import Graph from "./Graph"
 
 import LogEventModal from './LogEventModal';
 import LogMeasurementModal from './LogMeasurementModal';
@@ -48,26 +49,10 @@ export default function BabyDetailsPage() {
   const [openWeightLog, setOpenWeightLog] = useState(false)
   const handleOpenWeightLog = () => setOpenWeightLog(true)
   const handleCloseWeightLog = () => setOpenWeightLog(false)
-  
-  const LogTypes = {
-    HEAD: "head",
-    HEIGHT: "height",
-    WEIGHT: "weight",
-    TEMPERATURE: "temperature",
-    MEDICINE: "medicine",
-    VACCINE: "vaccine",
-  }
-  const lengthUnits = [
-    {name: "Centimeter", value: "cm"}, 
-  ]
-  const temperatureUnits = [
-    {name: "Celcius", value: "C"}, 
-  ]
-  const weightUnits = [
-    {name: "kilogram", value: "kg"},
-  ]
 
   const [babyDetails, setBabyDetails] = useState({})
+  const [refreshState, setRefreshState] = useState(0)
+  const [babyMeasurementHistory, setBabyMeasurementHistory] = useState([])
 
   const { id } = useParams()
 
@@ -79,6 +64,17 @@ export default function BabyDetailsPage() {
       setBabyDetails(result.data[0])
     })
   }, [])
+
+  useEffect(() => {
+    axios.get(`http://localhost:5050/log/measurement/${id}`, {
+      withCredentials: true,
+    })
+    .then((result) => {
+      setBabyMeasurementHistory(result.data)
+    })
+  }, refreshState)
+
+
 
   return (
     <>
