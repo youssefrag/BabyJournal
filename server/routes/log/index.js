@@ -29,6 +29,7 @@ module.exports = (db) => {
     console.log('date:', date)
     const logsForDate = await database.getLogsForDate(date, db)
     console.log(logsForDate.rows)
+    res.status(200).json(logsForDate.rows)
   })
 
   return router

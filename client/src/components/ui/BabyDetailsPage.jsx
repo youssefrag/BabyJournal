@@ -43,11 +43,7 @@ export default function BabyDetailsPage() {
 
   const classes = useStyles()
 
-  const [selectedDate, setSelectedDate] = useState(new Date());
-
-  console.log(formatDate(selectedDate))
-
-  
+  const [selectedDate, setSelectedDate] = useState(new Date());  
 
   const [eventsForDate, setEventsForDate] = useState([])
   
@@ -137,7 +133,7 @@ export default function BabyDetailsPage() {
       withCredentials: true,
     })
     .then((result) => {
-      console.log(result)
+      setEventsForDate(result.data)
     })
   }, [selectedDate])
 
@@ -170,6 +166,14 @@ export default function BabyDetailsPage() {
     });
     return headLogs
   }
+
+  const renderEvents = eventsForDate.map((event) => {
+    return(
+      <h1>
+        {event.event_detail}
+      </h1>
+    )
+  })
 
   return (
     <>
@@ -385,7 +389,12 @@ export default function BabyDetailsPage() {
           onChange={setSelectedDate}
           value={selectedDate}
         />
+        <Typography>
+          Logs for chosen date:
+        </Typography>
+        {renderEvents}
       </div>
     </>
   )
+
 }
