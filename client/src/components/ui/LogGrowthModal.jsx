@@ -66,6 +66,36 @@ export default function LogGrowthModal(props) {
   }
 
   return (
-    <div>{header}</div>
+    <>
+      <Typography>
+        {header}
+      </Typography>
+      <Box>
+        <TextField 
+          type="number"
+          label={placeHolder}
+          name='amount'
+          value={measurement.amount}
+          onChange={handleChange}
+          InputProps={{
+            inputProps: { min: 0 }
+          }}
+        />
+          <DatePicker 
+            label='Date' 
+            renderInput={(params) => <TextField {...params}/>}
+            value={date}
+            onChange={(newValue) => {
+              setDate(newValue)
+            }}
+          />
+      </Box>
+      <Button
+        variant='contained'
+        onClick={handleSubmit}
+      >
+        Submit
+      </Button>
+    </>
   )
 }

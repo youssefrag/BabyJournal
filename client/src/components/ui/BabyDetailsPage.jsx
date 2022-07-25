@@ -222,7 +222,7 @@ export default function BabyDetailsPage() {
             <LogGrowthModal 
               measurementType="head"
               babyId={id}
-              handleCloseMedLog={handleCloseHeadLog}
+              handleCloseHeadLog={handleCloseHeadLog}
             />
           </Box>
         </Modal>
