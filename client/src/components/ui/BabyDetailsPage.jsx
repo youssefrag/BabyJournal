@@ -42,6 +42,8 @@ const useStyles = makeStyles({
 export default function BabyDetailsPage() {
 
   const classes = useStyles()
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
   
   const [openTempLog, setOpenTempLog] = useState(false)
   const handleOpenTempLog = () => setOpenTempLog(true)
@@ -138,6 +140,10 @@ export default function BabyDetailsPage() {
     });
     return headLogs
   }
+
+  useEffect(() => {
+    
+  })
 
   return (
     <>
@@ -349,7 +355,10 @@ export default function BabyDetailsPage() {
       <div
         className={classes.calender}
       >
-        <Calendar />
+        <Calendar 
+          onChange={setSelectedDate}
+          value={selectedDate}
+        />
       </div>
     </>
   )
