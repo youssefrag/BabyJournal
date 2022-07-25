@@ -32,6 +32,7 @@ export default function LogGrowthModal(props) {
     const { type, amount } = measurement
     if (!amount) {
       alert('Empty values')
+      return
     }
     measurement['date'] = date.toString().slice(0, 15)
     console.log(measurement)

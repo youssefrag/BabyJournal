@@ -32,6 +32,7 @@ export default function LogEventModal(props) {
     const { type, details } = event
     if (!details) {
       alert('Empty values')
+      return
     }
     event['date'] = date.toString().slice(0, 15)
     if (type === 'temperature') {
