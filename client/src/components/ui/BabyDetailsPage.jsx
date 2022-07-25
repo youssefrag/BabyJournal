@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 import LogEventModal from './LogEventModal';
-import LogGrowthModal from './LogGrowthModal';
+import LogMeasurementModal from './LogMeasurementModal';
 
 import { Typography, Box, Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -219,7 +219,7 @@ export default function BabyDetailsPage() {
           <Box
             sx={style}
           >
-            <LogGrowthModal 
+            <LogMeasurementModal 
               measurementType="head"
               babyId={id}
               handleCloseHeadLog={handleCloseHeadLog}
@@ -241,7 +241,7 @@ export default function BabyDetailsPage() {
           <Box
             sx={style}
           >
-            <LogGrowthModal 
+            <LogMeasurementModal 
               measurementType="weight"
               babyId={id}
               handleCloseWeightLog={handleCloseWeightLog}
@@ -263,7 +263,7 @@ export default function BabyDetailsPage() {
           <Box
             sx={style}
           >
-            <LogGrowthModal 
+            <LogMeasurementModal 
               measurementType="height"
               babyId={id}
               handleCloseHeightLog={handleCloseHeightLog}
