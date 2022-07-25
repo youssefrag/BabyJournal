@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 import LogEventModal from './LogEventModal';
+import LogGrowthModal from './LogGrowthModal';
 
 import { Typography, Box, Button } from '@mui/material';
 import { Modal } from '@mui/material';
@@ -35,6 +36,10 @@ export default function BabyDetailsPage() {
   const [openMedLog, setOpenMedLog] = useState(false)
   const handleOpenMedLog = () => setOpenMedLog(true)
   const handleCloseMedLog = () => setOpenMedLog(false)
+
+  const [openHeadLog, setOpenHeadLog] = useState(false)
+  const handleOpenHeadLog = () => setOpenHeadLog(true)
+  const handleCloseHeadLog = () => setOpenHeadLog(false)
   
   const LogTypes = {
     HEAD: "head",
@@ -191,6 +196,28 @@ export default function BabyDetailsPage() {
         >
           Log {babyDetails.first_name}'s growth
         </Typography>
+        <Button
+          variant='contained'
+          onClick={handleOpenHeadLog} 
+        >
+          Head Size
+        </Button>
+        <Modal
+          open={openHeadLog}
+          onClose={handleCloseHeadLog}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={style}
+          >
+            <LogGrowthModal 
+              eventType="head"
+              babyId={id}
+              handleCloseMedLog={handleCloseHeadLog}
+            />
+          </Box>
+        </Modal>
       </Box>
     </>
   )
