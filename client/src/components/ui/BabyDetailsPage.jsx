@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import Graph from "./Graph"
 
 import LogEventModal from './LogEventModal';
 import LogMeasurementModal from './LogMeasurementModal';
 
 import { Typography, Box, Button } from '@mui/material';
 import { Modal } from '@mui/material';
+import { makeStyles } from "@mui/styles";
 
 import { useParams } from "react-router-dom";
+
+import Graph from "./Graph"
 
 const style = {
   position: 'absolute',
@@ -22,9 +24,16 @@ const style = {
   p: 4,
 };
 
+const useStyles = makeStyles({
+  graph: {
+    width: '400px',
+    height: '400px'
+  }
+})
+
 export default function BabyDetailsPage() {
 
-  
+  const classes = useStyles()
   
   const [openTempLog, setOpenTempLog] = useState(false)
   const handleOpenTempLog = () => setOpenTempLog(true)
@@ -112,10 +121,10 @@ export default function BabyDetailsPage() {
     return weightLogs
   }
 
-  const getheadLogs = (logs) => {
+  const getHeightLogs = (logs) => {
     let headLogs = []
     logs.forEach(log => {
-      if (log.measurement_type === 'head') {
+      if (log.measurement_type === 'height') {
         headLogs.push(log)
       }
     });
@@ -312,6 +321,28 @@ export default function BabyDetailsPage() {
             />
           </Box>
         </Modal>
+      </Box>
+      <Box
+        sx={{
+          border: 1
+        }}
+      >
+        <div
+          className={classes.graph}
+        >
+          <Graph 
+            logs={getHeadLogs(babyMeasurementHistory)} 
+            measurement='Head'
+          />
+          <Graph 
+            logs={getWeightLogs(babyMeasurementHistory)} 
+            measurement='Weight'
+          />
+          <Graph 
+            logs={getHeightLogs(babyMeasurementHistory)} 
+            measurement='Height'
+          />
+        </div>
       </Box>
     </>
   )

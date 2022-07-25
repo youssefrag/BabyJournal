@@ -34,3 +34,54 @@ export const options = {
   },
 };
 
+export default function Graph(props) {
+
+  const { logs, measurement } = props
+
+  const getLabels = (logs) => {
+    let labels = []
+    for (let log in logs) {
+      labels.push(logs[log].measurement_date.toString().slice(0, 10))
+    }
+    return labels
+  }
+
+  const getAmounts = (logs) => {
+    let amounts = []
+    for (let log in logs) {
+      amounts.push(logs[log].measurement_amount)
+    }
+    return amounts
+  }
+
+  let data = {}
+  data.labels = getLabels(logs)
+  data.datasets = []
+  data.datasets.push({})
+  data.datasets[0].label = measurement
+  data.datasets[0].fill = false
+  data.datasets[0].lineTension = 0.5
+  data.datasets[0].backgroundColor = 'rgba(75,192,192,1)'
+  data.datasets[0].borderColor = 'rgba(0,0,0,1)'
+  data.datasets[0].borderWidth = 2
+  data.datasets[0].data = getAmounts(logs)
+
+  return(
+    <div>
+      <Line
+        data={data}
+        options={{
+          title:{
+            display:true,
+            text:'Height change',
+            fontSize:20
+          },
+          legend:{
+            display:true,
+            position:'right'
+          }
+        }}
+      />
+    </div>
+  )
+}
