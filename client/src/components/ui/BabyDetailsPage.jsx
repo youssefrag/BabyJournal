@@ -11,7 +11,8 @@ import { makeStyles } from "@mui/styles";
 import { useParams } from "react-router-dom";
 
 import Graph from "./Graph"
-import LogCalendar from './LogCalender';
+import Calendar from 'react-calendar';
+import "react-calendar/dist/Calendar.css";
 
 const style = {
   position: 'absolute',
@@ -32,6 +33,9 @@ const useStyles = makeStyles({
     marginLeft: '50px',
     border: '1px solid',
     padding: '20px'
+  },
+  calender: {
+    marginLeft: '50px',
   }
 })
 
@@ -341,6 +345,11 @@ export default function BabyDetailsPage() {
           logs={getHeightLogs(babyMeasurementHistory)} 
           measurement='Height'
         />
+      </div>
+      <div
+        className={classes.calender}
+      >
+        <Calendar />
       </div>
     </>
   )
