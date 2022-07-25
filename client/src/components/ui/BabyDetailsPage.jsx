@@ -40,6 +40,14 @@ export default function BabyDetailsPage() {
   const [openHeadLog, setOpenHeadLog] = useState(false)
   const handleOpenHeadLog = () => setOpenHeadLog(true)
   const handleCloseHeadLog = () => setOpenHeadLog(false)
+
+  const [openHeightLog, setOpenHeightLog] = useState(false)
+  const handleOpenHeightLog = () => setOpenHeightLog(true)
+  const handleCloseHeightLog = () => setOpenHeightLog(false)
+
+  const [openWeightLog, setOpenWeightLog] = useState(false)
+  const handleOpenWeightLog = () => setOpenWeightLog(true)
+  const handleCloseWeightLog = () => setOpenWeightLog(false)
   
   const LogTypes = {
     HEAD: "head",
@@ -212,9 +220,53 @@ export default function BabyDetailsPage() {
             sx={style}
           >
             <LogGrowthModal 
-              eventType="head"
+              measurementType="head"
               babyId={id}
               handleCloseMedLog={handleCloseHeadLog}
+            />
+          </Box>
+        </Modal>
+        <Button
+          variant='contained'
+          onClick={handleOpenWeightLog} 
+        >
+          Weight
+        </Button>
+        <Modal
+          open={openWeightLog}
+          onClose={handleCloseWeightLog}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={style}
+          >
+            <LogGrowthModal 
+              measurementType="weight"
+              babyId={id}
+              handleCloseWeightLog={handleCloseWeightLog}
+            />
+          </Box>
+        </Modal>
+        <Button
+          variant='contained'
+          onClick={handleOpenHeightLog} 
+        >
+          Height
+        </Button>
+        <Modal
+          open={openHeightLog}
+          onClose={handleCloseHeightLog}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={style}
+          >
+            <LogGrowthModal 
+              measurementType="height"
+              babyId={id}
+              handleCloseHeightLog={handleCloseHeightLog}
             />
           </Box>
         </Modal>
