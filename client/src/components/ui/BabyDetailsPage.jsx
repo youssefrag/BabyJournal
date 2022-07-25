@@ -11,6 +11,7 @@ import { makeStyles } from "@mui/styles";
 import { useParams } from "react-router-dom";
 
 import Graph from "./Graph"
+import { margin } from '@mui/system';
 
 const style = {
   position: 'absolute',
@@ -26,8 +27,11 @@ const style = {
 
 const useStyles = makeStyles({
   graph: {
-    width: '400px',
-    height: '400px'
+    width: '670px',
+    height: '1000px',
+    marginLeft: '50px',
+    border: '1px solid',
+    padding: '20px'
   }
 })
 
@@ -322,28 +326,22 @@ export default function BabyDetailsPage() {
           </Box>
         </Modal>
       </Box>
-      <Box
-        sx={{
-          border: 1
-        }}
+      <div
+        className={classes.graph}
       >
-        <div
-          className={classes.graph}
-        >
-          <Graph 
-            logs={getHeadLogs(babyMeasurementHistory)} 
-            measurement='Head'
-          />
-          <Graph 
-            logs={getWeightLogs(babyMeasurementHistory)} 
-            measurement='Weight'
-          />
-          <Graph 
-            logs={getHeightLogs(babyMeasurementHistory)} 
-            measurement='Height'
-          />
-        </div>
-      </Box>
+        <Graph 
+          logs={getHeadLogs(babyMeasurementHistory)} 
+          measurement='Head'
+        />
+        <Graph 
+          logs={getWeightLogs(babyMeasurementHistory)} 
+          measurement='Weight'
+        />
+        <Graph 
+          logs={getHeightLogs(babyMeasurementHistory)} 
+          measurement='Height'
+        />
+      </div>
     </>
   )
 }
