@@ -89,4 +89,16 @@ const addEventLog = function(babyId, type, details, date, pool) {
     })
 }
 
-module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog }
+const addMeasurementLog = function(babyId, type, amount, date, pool) {
+  return pool
+    .query(
+      `
+        INSERT INTO measurement (baby_id, measurement_type, measurement_amount, measurement_date) VALUES ($1, $2, $3, $4);
+      `, [babyId, type, amount, date]
+    )
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog, addMeasurementLog }
