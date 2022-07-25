@@ -92,7 +92,35 @@ export default function BabyDetailsPage() {
     })
   }, [refreshState])
 
+  const getHeadLogs = (logs) => {
+    let headLogs = []
+    logs.forEach(log => {
+      if (log.measurement_type === 'head') {
+        headLogs.push(log)
+      }
+    });
+    return headLogs
+  }
 
+  const getWeightLogs = (logs) => {
+    let weightLogs = []
+    logs.forEach(log => {
+      if (log.measurement_type === 'weight') {
+        weightLogs.push(log)
+      }
+    });
+    return weightLogs
+  }
+
+  const getheadLogs = (logs) => {
+    let headLogs = []
+    logs.forEach(log => {
+      if (log.measurement_type === 'head') {
+        headLogs.push(log)
+      }
+    });
+    return headLogs
+  }
 
   return (
     <>
