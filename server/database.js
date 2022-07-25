@@ -1,3 +1,5 @@
+const { query } = require("express")
+
 const addUser = function(name, email, password, pool) {
   return pool
     .query(
@@ -101,4 +103,17 @@ const addMeasurementLog = function(babyId, type, amount, date, pool) {
     })
 }
 
-module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog, addMeasurementLog }
+const getMeasurementLogs = function(babyId, pool) {
+  return pool
+    .query(
+      `
+        SELECT * FROM measurement
+        WHERE baby_id = $1;
+      `, [babyId]
+    )
+    .catch((err) => {
+      console.log(err.message)
+    })   
+}
+
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog, addMeasurementLog, getMeasurementLogs }

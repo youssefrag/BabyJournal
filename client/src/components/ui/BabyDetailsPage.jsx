@@ -28,27 +28,45 @@ export default function BabyDetailsPage() {
   
   const [openTempLog, setOpenTempLog] = useState(false)
   const handleOpenTempLog = () => setOpenTempLog(true)
-  const handleCloseTempLog = () => setOpenTempLog(false)
+  const handleCloseTempLog = () => {
+    setOpenTempLog(false)
+    setRefreshState(refreshState + 1)
+  }
 
   const [openVacLog, setOpenVacLog] = useState(false)
   const handleOpenVacLog = () => setOpenVacLog(true)
-  const handleCloseVacLog = () => setOpenVacLog(false)
+  const handleCloseVacLog = () => {
+    setOpenVacLog(false)
+    setRefreshState(refreshState + 1)
+  } 
 
   const [openMedLog, setOpenMedLog] = useState(false)
   const handleOpenMedLog = () => setOpenMedLog(true)
-  const handleCloseMedLog = () => setOpenMedLog(false)
+  const handleCloseMedLog = () => {
+    setOpenMedLog(false)
+    setRefreshState(refreshState + 1)
+  }
 
   const [openHeadLog, setOpenHeadLog] = useState(false)
   const handleOpenHeadLog = () => setOpenHeadLog(true)
-  const handleCloseHeadLog = () => setOpenHeadLog(false)
+  const handleCloseHeadLog = () => { 
+    setOpenHeadLog(false)
+    setRefreshState(refreshState + 1)
+  }
 
   const [openHeightLog, setOpenHeightLog] = useState(false)
   const handleOpenHeightLog = () => setOpenHeightLog(true)
-  const handleCloseHeightLog = () => setOpenHeightLog(false)
+  const handleCloseHeightLog = () => {
+    setOpenHeightLog(false)
+    setRefreshState(refreshState + 1)
+  }
 
   const [openWeightLog, setOpenWeightLog] = useState(false)
   const handleOpenWeightLog = () => setOpenWeightLog(true)
-  const handleCloseWeightLog = () => setOpenWeightLog(false)
+  const handleCloseWeightLog = () => {
+    setOpenWeightLog(false)
+    setRefreshState(refreshState + 1)
+  }
 
   const [babyDetails, setBabyDetails] = useState({})
   const [refreshState, setRefreshState] = useState(0)
@@ -72,7 +90,7 @@ export default function BabyDetailsPage() {
     .then((result) => {
       setBabyMeasurementHistory(result.data)
     })
-  }, refreshState)
+  }, [refreshState])
 
 
 

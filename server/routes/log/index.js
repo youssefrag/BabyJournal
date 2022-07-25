@@ -20,7 +20,8 @@ module.exports = (db) => {
 
   router.get('/measurement/:baby_id', async (req,res) => {
     const baby_id = req.params.baby_id
-    
+    const measurementLogs = await database.getMeasurementLogs(baby_id, db)
+    res.status(200).json(measurementLogs.rows)
   })
 
   return router
