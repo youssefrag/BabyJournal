@@ -116,7 +116,7 @@ export default function BabyDetailsPage() {
             variant='contained'
             onClick={handleOpenTempLog}
           >
-            Log temperature
+            Temperature
           </Button>
           <Modal
             open={openTempLog}
@@ -161,7 +161,7 @@ export default function BabyDetailsPage() {
             variant='contained'
             onClick={handleOpenMedLog}
           >
-            Medicie
+            Medication
           </Button>
           <Modal
             open={openMedLog}
@@ -180,6 +180,12 @@ export default function BabyDetailsPage() {
             </Box>
           </Modal>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          border: 1
+        }}
+      >
         <Typography
           variant='h4'
         >
