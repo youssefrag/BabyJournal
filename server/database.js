@@ -116,4 +116,17 @@ const getMeasurementLogs = function(babyId, pool) {
     })   
 }
 
-module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog, addMeasurementLog, getMeasurementLogs }
+const getLogsForDate = function(date, pool) {
+  return pool
+    .query(
+      `
+        SELECT * FROM event
+        WHERE event_date = $1;
+      `, [date]
+    )
+    .catch((err) => {
+      console.log(err.message)
+    })  
+}
+
+module.exports = { addUser, getUser, addBaby, getBabiesForParent, getBabyDetails, addEventLog, addMeasurementLog, getMeasurementLogs, getLogsForDate }

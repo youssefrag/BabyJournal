@@ -38,7 +38,6 @@ export default function LogEventModal(props) {
     if (type === 'temperature') {
       event['details'] = `${event.details} degrees celcius`
     }
-    console.log(event)
     axios.post(`http://localhost:5050/log/event/${babyId}`, event, {
       withCredentials: true,
     })

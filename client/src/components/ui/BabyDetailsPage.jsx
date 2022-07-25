@@ -44,6 +44,12 @@ export default function BabyDetailsPage() {
   const classes = useStyles()
 
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  console.log(formatDate(selectedDate))
+
+  
+
+  const [eventsForDate, setEventsForDate] = useState([])
   
   const [openTempLog, setOpenTempLog] = useState(false)
   const handleOpenTempLog = () => setOpenTempLog(true)
@@ -111,6 +117,30 @@ export default function BabyDetailsPage() {
     })
   }, [refreshState])
 
+  function formatDate(oldDate) {
+    const date = oldDate.toString().slice(0, 15)
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+  useEffect(() => {
+    axios.get(`http://localhost:5050/log/event/${formatDate(selectedDate)}`, {
+      withCredentials: true,
+    })
+    .then((result) => {
+      console.log(result)
+    })
+  }, [selectedDate])
+
   const getHeadLogs = (logs) => {
     let headLogs = []
     logs.forEach(log => {
@@ -140,10 +170,6 @@ export default function BabyDetailsPage() {
     });
     return headLogs
   }
-
-  useEffect(() => {
-    
-  })
 
   return (
     <>
