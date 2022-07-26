@@ -10,8 +10,12 @@ import { Box } from "@mui/system";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
-  root: {
-    // marginTop: '60px'
+  babies: {
+    border: '1px solid',
+    marginLeft: '20px',
+    marginRight: '20px',
+    display: 'flex',
+    backgroundColor: 'white'
   }
 })
 
@@ -57,14 +61,14 @@ export default function BabyList() {
 
   return (
     <div className={classes.root}>
-      <Box
-        sx={{
-          marginLeft: '20px'
-        }}
-      >
-        {babyListItems}
-        <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
-      </Box>
+      <div>
+        <Box
+          className={classes.babies}
+        >
+          {babyListItems}
+          <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
+        </Box>
+      </div>
     </div>
   )
 

@@ -22,7 +22,8 @@ import BabyDetailsPage from "./ui/BabyDetailsPage";
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '60px',
+    paddingTop: '100px',
+    paddingBottom: '800px',
     backgroundColor: '#D3D3D3',
   },
 });

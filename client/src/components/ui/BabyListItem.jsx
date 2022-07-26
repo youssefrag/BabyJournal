@@ -7,10 +7,14 @@ import { makeStyles } from "@mui/styles";
 
 
 const useStyles = makeStyles({
+  root: {
+    marginLeft: '30px'
+  },
   images: {
     width: '200px', 
     height: '200px',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    border: '1px solid'
   },
   nameTitle: {
     margin: 'auto',
@@ -33,6 +37,7 @@ export default function BabyListItem(props) {
   if (name) {
     return (
       <Box
+        className={classes.root}
         onClick={goToBabyDetailsPage}
       >
         <Typography
@@ -40,6 +45,7 @@ export default function BabyListItem(props) {
           className={classes.nameTitle}
           sx={{
             fontSize: 45,
+            textAlign: 'center'
           }}
         >
           {name}
@@ -53,6 +59,7 @@ export default function BabyListItem(props) {
   } else {
     return(
       <Box
+        className={classes.root}
         onClick={goToNewBabyPage}
       >
         <Typography
@@ -60,7 +67,7 @@ export default function BabyListItem(props) {
           className={classes.nameTitle}          
           sx={{
             fontSize: 45,
-            margin: 'auto'
+            textAlign: 'center'
           }}
         >
           New Baby?
