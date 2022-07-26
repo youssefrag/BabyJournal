@@ -27,18 +27,54 @@ const style = {
 };
 
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: '#D3D3D3'
-  },
-  graph: {
-    width: '670px',
-    height: '1000px',
-    marginLeft: '50px',
-    border: '1px solid',
-    padding: '20px'
+  graphs: {
+    paddingTop: '60px'
   },
   calender: {
-    marginLeft: '50px',
+    border: '1px solid',
+    marginTop: '20px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+    width: '100%',
+    height: '70%'
+  },
+  mainSection: {
+    border: '1px solid',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+    display: 'flex'
+  },
+  eventLogSection: {
+    border: '1px solid',
+    marginTop: '20px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  growthSection: {
+    border: '1px solid',
+    marginTop: '20px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  logsAndCalender: {
+    display: 'flex',
+    justifyContent: 'space-between',
   }
 })
 
@@ -181,18 +217,15 @@ export default function BabyDetailsPage() {
   return (
     <div className={classes.root}>
       <Box
-        sx={{
-          display: 'flex',
-          marginLeft: '30px',
-          border: 1
-        }}
+        className={classes.mainSection}
       >
         <img 
           src={babyDetails.picture_url}
           style={{
             width: '70px',
             height: '80px',
-            marginTop: '40px'
+            marginTop: '30px',
+            borderRadius: '50%'
           }}
         />
         <Box
@@ -201,7 +234,7 @@ export default function BabyDetailsPage() {
           }}
         >
           <Typography
-            variant='h1'
+            variant='h2'
           >
             {babyDetails.first_name} {babyDetails.last_name}
           </Typography>
@@ -212,190 +245,222 @@ export default function BabyDetailsPage() {
           </Typography>
         </Box>
       </Box>
-      <Box
-        sx={{
-          border: 1
-        }}
+      <div
+        className={classes.logsAndCalender}
       >
-        <Typography
-          variant='h4'
-        >
-          Log {babyDetails.first_name}'s health
-        </Typography>
-        <Box>
-          <Button
-            variant='contained'
-            onClick={handleOpenTempLog}
+        <div>
+          <Box
+            className={classes.eventLogSection}
           >
-            Temperature
-          </Button>
-          <Modal
-            open={openTempLog}
-            onClose={handleCloseTempLog}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box
-              sx={style}
+            <Typography
+              variant='h4'
+              sx={{
+                marginBottom: '20px',
+                // textAlign: 'center'
+              }}
             >
-              <LogEventModal 
-                eventType="temperature"
-                babyId={id}
-                handleCloseTempLog={handleCloseTempLog}
-              />
-            </Box>
+              Log {babyDetails.first_name}'s health
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                // justifyContent: 'center'
+              }}
+            >
+              <Button
+                variant='contained'
+                onClick={handleOpenTempLog}
+              >
+                Temperature
+              </Button>
+              <Modal
+                open={openTempLog}
+                onClose={handleCloseTempLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogEventModal 
+                    eventType="temperature"
+                    babyId={id}
+                    handleCloseTempLog={handleCloseTempLog}
+                  />
+                </Box>
 
-          </Modal>
-          <Button
-            variant='contained'
-            onClick={handleOpenVacLog}
-          >
-            Vaccine
-          </Button>
-          <Modal
-            open={openVacLog}
-            onClose={handleCloseVacLog}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box
-              sx={style}
-            >
-              <LogEventModal 
-                eventType="vaccine"
-                babyId={id}
-                handleCloseVacLog={handleCloseVacLog}
-              />
+              </Modal>
+              <Button
+                variant='contained'
+                onClick={handleOpenVacLog}
+                sx={{
+                  marginLeft: '10px'
+                }}
+              >
+                Vaccine
+              </Button>
+              <Modal
+                open={openVacLog}
+                onClose={handleCloseVacLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogEventModal 
+                    eventType="vaccine"
+                    babyId={id}
+                    handleCloseVacLog={handleCloseVacLog}
+                  />
+                </Box>
+              </Modal>
+              <Button
+                variant='contained'
+                onClick={handleOpenMedLog}
+                sx={{
+                  marginLeft: '10px'
+                }}
+              >
+                Medication
+              </Button>
+              <Modal
+                open={openMedLog}
+                onClose={handleCloseMedLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogEventModal 
+                    eventType="medicine"
+                    babyId={id}
+                    handleCloseMedLog={handleCloseMedLog}
+                  />
+                </Box>
+              </Modal>
             </Box>
-          </Modal>
-          <Button
-            variant='contained'
-            onClick={handleOpenMedLog}
+          </Box>
+          <Box
+            className={classes.growthSection}
           >
-            Medication
-          </Button>
-          <Modal
-            open={openMedLog}
-            onClose={handleCloseMedLog}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box
-              sx={style}
+            <Typography
+              variant='h4'
+              sx={{
+                marginBottom: '20px'
+              }}
             >
-              <LogEventModal 
-                eventType="medicine"
-                babyId={id}
-                handleCloseMedLog={handleCloseMedLog}
-              />
+              Log {babyDetails.first_name}'s growth
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex'
+              }}
+            >
+              <Button
+                variant='contained'
+                onClick={handleOpenHeadLog}
+                sx={{
+                  marginRight: '10px'
+                }}
+              >
+                Head Size
+              </Button>
+              <Modal
+                open={openHeadLog}
+                onClose={handleCloseHeadLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogMeasurementModal 
+                    measurementType="head"
+                    babyId={id}
+                    handleCloseHeadLog={handleCloseHeadLog}
+                  />
+                </Box>
+              </Modal>
+              <Button
+                variant='contained'
+                onClick={handleOpenWeightLog}
+                sx={{
+                  marginRight: '10px'
+                }}
+              >
+                Weight
+              </Button>
+              <Modal
+                open={openWeightLog}
+                onClose={handleCloseWeightLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogMeasurementModal 
+                    measurementType="weight"
+                    babyId={id}
+                    handleCloseWeightLog={handleCloseWeightLog}
+                  />
+                </Box>
+              </Modal>
+              <Button
+                variant='contained'
+                onClick={handleOpenHeightLog} 
+              >
+                Height
+              </Button>
+              <Modal
+                open={openHeightLog}
+                onClose={handleCloseHeightLog}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box
+                  sx={style}
+                >
+                  <LogMeasurementModal 
+                    measurementType="height"
+                    babyId={id}
+                    handleCloseHeightLog={handleCloseHeightLog}
+                  />
+                </Box>
+              </Modal>
             </Box>
-          </Modal>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          border: 1
-        }}
-      >
-        <Typography
-          variant='h4'
-        >
-          Log {babyDetails.first_name}'s growth
-        </Typography>
-        <Button
-          variant='contained'
-          onClick={handleOpenHeadLog} 
-        >
-          Head Size
-        </Button>
-        <Modal
-          open={openHeadLog}
-          onClose={handleCloseHeadLog}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box
-            sx={style}
-          >
-            <LogMeasurementModal 
-              measurementType="head"
-              babyId={id}
-              handleCloseHeadLog={handleCloseHeadLog}
-            />
+            <div
+              className={classes.graphs}
+            >
+              <Graph 
+                logs={getHeadLogs(babyMeasurementHistory)} 
+                measurement='Head'
+              />
+              <Graph 
+                logs={getWeightLogs(babyMeasurementHistory)} 
+                measurement='Weight'
+              />
+              <Graph 
+                logs={getHeightLogs(babyMeasurementHistory)} 
+                measurement='Height'
+              />
+            </div>
           </Box>
-        </Modal>
-        <Button
-          variant='contained'
-          onClick={handleOpenWeightLog} 
+        </div>
+        <div
+          className={classes.calender}
         >
-          Weight
-        </Button>
-        <Modal
-          open={openWeightLog}
-          onClose={handleCloseWeightLog}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box
-            sx={style}
-          >
-            <LogMeasurementModal 
-              measurementType="weight"
-              babyId={id}
-              handleCloseWeightLog={handleCloseWeightLog}
-            />
-          </Box>
-        </Modal>
-        <Button
-          variant='contained'
-          onClick={handleOpenHeightLog} 
-        >
-          Height
-        </Button>
-        <Modal
-          open={openHeightLog}
-          onClose={handleCloseHeightLog}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box
-            sx={style}
-          >
-            <LogMeasurementModal 
-              measurementType="height"
-              babyId={id}
-              handleCloseHeightLog={handleCloseHeightLog}
-            />
-          </Box>
-        </Modal>
-      </Box>
-      <div
-        className={classes.graph}
-      >
-        <Graph 
-          logs={getHeadLogs(babyMeasurementHistory)} 
-          measurement='Head'
-        />
-        <Graph 
-          logs={getWeightLogs(babyMeasurementHistory)} 
-          measurement='Weight'
-        />
-        <Graph 
-          logs={getHeightLogs(babyMeasurementHistory)} 
-          measurement='Height'
-        />
-      </div>
-      <div
-        className={classes.calender}
-      >
-        <Calendar 
-          onChange={setSelectedDate}
-          value={selectedDate}
-        />
-        <Typography>
-          Logs for chosen date:
-        </Typography>
-        {renderEvents}
+          <Calendar 
+            onChange={setSelectedDate}
+            value={selectedDate}
+          />
+          <Typography>
+            Logs for chosen date:
+          </Typography>
+          {renderEvents}
+        </div>
       </div>
     </div>
   )
