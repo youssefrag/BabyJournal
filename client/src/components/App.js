@@ -23,7 +23,7 @@ import BabyDetailsPage from "./ui/BabyDetailsPage";
 const useStyles = makeStyles({
   root: {
     paddingTop: '100px',
-    paddingBottom: '800px',
+    paddingBottom: '500px',
     backgroundColor: '#D3D3D3',
   },
 });
