@@ -7,7 +7,29 @@ import { Stack, TextField, Typography, Button } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import moment from 'moment';
 
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  form: {
+    border: '1px solid',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+  },
+  title: {
+    textAlign: 'center',
+    paddingBottom: '40px'
+  },
+  field: {
+    width: '400px',
+  }
+})
+
 export default function NewBaby() {
+
+  const classes = useStyles()
 
   const { userContextParentId } = useContext(UserContext);
 
@@ -53,7 +75,7 @@ export default function NewBaby() {
   }
 
   return (
-    <>
+    <div className={classes.form}>
       <Typography
         variant='h4'
         sx={{
@@ -125,6 +147,6 @@ export default function NewBaby() {
           Register baby
         </Button>      
       </Stack>
-    </>
+    </div>
   )
 }
