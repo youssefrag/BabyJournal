@@ -65,7 +65,7 @@ export default function RegistrationPage() {
         variant='h3'
         className={classes.title}
       >
-        Registration Page!
+        Registration Page
       </Typography>
       <form
         id="registration-form"

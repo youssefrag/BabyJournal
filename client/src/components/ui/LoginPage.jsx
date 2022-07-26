@@ -4,8 +4,30 @@ import { UserContext } from '../../context/userContext'
 import { useNavigate } from "react-router-dom";
 import {Button, TextField, Typography } from '@mui/material';
 
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  form: {
+    border: '1px solid',
+    marginLeft: '20px',
+    marginRight: '20px',
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px',
+  },
+  title: {
+    textAlign: 'center',
+    paddingBottom: '40px'
+  },
+  field: {
+    width: '400px',
+  }
+})
+
 
 export default function LoginPage() {
+
+  const classes = useStyles()
 
   let navigate = useNavigate();
 
@@ -46,11 +68,12 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <div className={classes.form}>
       <Typography
-        variant='h2'
+        variant='h3'
+        className={classes.title}
       >
-        Please login to use application!
+        Please login to use application
       </Typography>
       <form
         id="registration-form"
@@ -65,11 +88,9 @@ export default function LoginPage() {
           required
           value={user.email}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginLeft: '175px'
           }}
         />
         <TextField
@@ -80,11 +101,9 @@ export default function LoginPage() {
           required
           value={user.password}
           onChange={handleChange}
-          style={{ 
-            marginTop: 20,
-            marginBottom: 20,
-            marginLeft: 20,
-            display: 'block',
+          className={classes.field}
+          sx={{
+            marginLeft: '50px'
           }}
         />
         <Button
@@ -92,12 +111,13 @@ export default function LoginPage() {
           size='large'
           onClick={handleSubmit}
           style={{ 
-            marginLeft: 20,
+            marginLeft: 550,
+            marginTop: 50
           }}
         >
           Login!
         </Button>
       </form>
-    </>
+    </div>
   )
 }
