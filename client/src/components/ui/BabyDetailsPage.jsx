@@ -38,7 +38,6 @@ const useStyles = makeStyles({
     backgroundColor: 'white',
     padding: '30px',
     borderRadius: '20px',
-    // width: '80%',
     height: '70%',
     display: 'flex',
     flexDirection: 'column',
@@ -173,7 +172,7 @@ export default function BabyDetailsPage() {
 }
 
   useEffect(() => {
-    axios.get(`http://localhost:5050/log/event/${formatDate(selectedDate)}`, {
+    axios.get(`http://localhost:5050/log/event/${formatDate(selectedDate)}/${id}`, {
       withCredentials: true,
     })
     .then((result) => {

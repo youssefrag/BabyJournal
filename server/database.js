@@ -116,13 +116,13 @@ const getMeasurementLogs = function(babyId, pool) {
     })   
 }
 
-const getLogsForDate = function(date, pool) {
+const getLogsForDate = function(date, babyId, pool) {
   return pool
     .query(
       `
         SELECT * FROM event
-        WHERE event_date = $1;
-      `, [date]
+        WHERE event_date = $1 AND baby_id=$2;
+      `, [date, babyId]
     )
     .catch((err) => {
       console.log(err.message)

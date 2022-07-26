@@ -24,9 +24,10 @@ module.exports = (db) => {
     res.status(200).json(measurementLogs.rows)
   })
 
-  router.get('/event/:date', async (req, res) => {
+  router.get('/event/:date/:baby_id', async (req, res) => {
     const date = req.params.date
-    const logsForDate = await database.getLogsForDate(date, db)
+    const babyId = req.params.baby_id
+    const logsForDate = await database.getLogsForDate(date, babyId, db)
     res.status(200).json(logsForDate.rows)
   })
 
