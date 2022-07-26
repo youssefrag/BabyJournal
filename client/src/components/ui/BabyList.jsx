@@ -15,7 +15,9 @@ const useStyles = makeStyles({
     marginLeft: '20px',
     marginRight: '20px',
     display: 'flex',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    padding: '30px',
+    borderRadius: '20px'
   }
 })
 
