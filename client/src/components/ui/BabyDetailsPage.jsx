@@ -27,6 +27,9 @@ const style = {
 };
 
 const useStyles = makeStyles({
+  root: {
+    backgroundColor: '#D3D3D3'
+  },
   graph: {
     width: '670px',
     height: '1000px',
@@ -176,7 +179,7 @@ export default function BabyDetailsPage() {
   })
 
   return (
-    <>
+    <div className={classes.root}>
       <Box
         sx={{
           display: 'flex',
@@ -394,7 +397,7 @@ export default function BabyDetailsPage() {
         </Typography>
         {renderEvents}
       </div>
-    </>
+    </div>
   )
 
 }

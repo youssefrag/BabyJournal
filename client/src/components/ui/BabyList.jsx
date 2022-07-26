@@ -7,12 +7,11 @@ import axios from 'axios';
 import BabyListItem from "./BabyListItem";
 import { Box } from "@mui/system";
 
-import { makeStyles } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   root: {
-    background: '#D3D3D3'
+    // marginTop: '60px'
   }
 })
 
@@ -39,11 +38,7 @@ export default function BabyList() {
 
   babyListItems = babies.map((baby) => {
     return(
-      <Box
-        sx={{
-          marginBottom: '100px'
-        }}
-      >
+      <Box>
         <BabyListItem
           key={baby.id}
           id={baby.id}

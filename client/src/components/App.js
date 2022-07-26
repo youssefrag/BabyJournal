@@ -22,7 +22,8 @@ import BabyDetailsPage from "./ui/BabyDetailsPage";
 
 const useStyles = makeStyles({
   root: {
-    marginTop: '80px',
+    marginTop: '60px',
+    backgroundColor: '#D3D3D3',
   },
 });
 
@@ -39,7 +40,7 @@ function App() {
   }, [Cookies.get('user_id')])
 
   return (
-    <div className='root'>
+    <div className={classes.root}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
           <header>
