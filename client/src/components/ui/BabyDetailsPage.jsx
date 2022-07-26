@@ -38,8 +38,11 @@ const useStyles = makeStyles({
     backgroundColor: 'white',
     padding: '30px',
     borderRadius: '20px',
-    width: '100%',
-    height: '70%'
+    // width: '80%',
+    height: '70%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   },
   mainSection: {
     border: '1px solid',
@@ -60,6 +63,7 @@ const useStyles = makeStyles({
     borderRadius: '20px',
     display: 'flex',
     flexDirection: 'column',
+    width: '85%'
   },
   growthSection: {
     border: '1px solid',
@@ -71,6 +75,7 @@ const useStyles = makeStyles({
     borderRadius: '20px',
     display: 'flex',
     flexDirection: 'column',
+    width: '600px'
   },
   logsAndCalender: {
     display: 'flex',
@@ -208,9 +213,32 @@ export default function BabyDetailsPage() {
 
   const renderEvents = eventsForDate.map((event) => {
     return(
-      <h1>
-        {event.event_detail}
-      </h1>
+      <Box
+        sx={{
+          alignSelf: 'flex-start',
+          border: '1px solid',
+          width: '100%',
+          height: '100px',
+          backgroundColor: '#b3d9ff'
+        }}
+      >
+        <Typography
+          variant='h4'
+          sx={{
+            marginLeft: '15px'
+          }}
+        >
+          {event.event_type}:
+        </Typography>
+        <Typography
+          variant='h4'
+          sx={{
+            marginLeft: '15px'
+          }}
+        >
+          {event.event_detail}
+        </Typography>
+      </Box>
     )
   })
 
@@ -456,7 +484,13 @@ export default function BabyDetailsPage() {
             onChange={setSelectedDate}
             value={selectedDate}
           />
-          <Typography>
+          <Typography
+            variant='h2'
+            sx={{
+              marginTop: '30px',
+              marginBottom: '30px'
+            }}
+          >
             Logs for chosen date:
           </Typography>
           {renderEvents}

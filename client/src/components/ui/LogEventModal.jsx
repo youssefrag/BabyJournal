@@ -72,6 +72,10 @@ export default function LogEventModal(props) {
             InputProps={{
               inputProps: { min: 0 }
             }}
+            sx={{
+              marginTop: '10px',
+              marginBottom: '20px'
+            }}
           />
             <DatePicker 
               label='Date' 
@@ -85,6 +89,9 @@ export default function LogEventModal(props) {
         <Button
           variant='contained'
           onClick={handleSubmit}
+          sx={{
+            marginTop: '10px'
+          }}
         >
           Submit
         </Button>
@@ -92,19 +99,26 @@ export default function LogEventModal(props) {
     )
   } else {
     return(
-      <>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column'
+        }}
+      >
         <Typography>
           log {eventType} here
         </Typography>
-        <Box>
-          <TextField 
-            type='text'
-            label="Details"
-            name='details'
-            value={event.details}
-            onChange={handleChange}
-          />
-        </Box>
+        <TextField 
+          type='text'
+          label="Details"
+          name='details'
+          value={event.details}
+          onChange={handleChange}
+          sx={{
+            marginTop: '10px',
+            marginBottom: '20px'
+          }}
+        />
         <DatePicker 
           label='Date' 
           renderInput={(params) => <TextField {...params}/>}
@@ -116,10 +130,14 @@ export default function LogEventModal(props) {
         <Button
           variant='contained'
           onClick={handleSubmit}
+          sx={{
+            marginTop: '15px',
+            width: '40%'
+          }}
         >
           Submit
         </Button>
-      </>
+      </div>
     )
   }
 }

@@ -68,7 +68,11 @@ export default function LogGrowthModal(props) {
 
   return (
     <>
-      <Typography>
+      <Typography
+        sx={{
+          marginBottom: '15px'
+        }}
+      >
         {header}
       </Typography>
       <Box>
@@ -80,6 +84,9 @@ export default function LogGrowthModal(props) {
           onChange={handleChange}
           InputProps={{
             inputProps: { min: 0 }
+          }}
+          sx={{
+            marginBottom: '15px'
           }}
         />
         <DatePicker 
@@ -94,6 +101,9 @@ export default function LogGrowthModal(props) {
       <Button
         variant='contained'
         onClick={handleSubmit}
+        sx={{
+          marginTop: '15px'
+        }}
       >
         Submit
       </Button>
