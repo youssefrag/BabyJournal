@@ -3,17 +3,22 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-
 import axios from 'axios';
 import BabyListItem from "./BabyListItem";
 import { Box } from "@mui/system";
 
+import { makeStyles } from "@mui/material";
+import { grey } from "@mui/material/colors";
+
+const useStyles = makeStyles({
+  root: {
+    background: '#D3D3D3'
+  }
+})
+
 export default function BabyList() {
+
+  const classes = useStyles()
 
   let navigate = useNavigate();
 
@@ -56,14 +61,16 @@ export default function BabyList() {
   }
 
   return (
-    <Box
-      sx={{
-        marginLeft: '20px'
-      }}
-    >
-      {babyListItems}
-      <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
-    </Box>
+    <div className={classes.root}>
+      <Box
+        sx={{
+          marginLeft: '20px'
+        }}
+      >
+        {babyListItems}
+        <BabyListItem goToNewBabyPage={goToNewBabyPage}/>
+      </Box>
+    </div>
   )
 
 

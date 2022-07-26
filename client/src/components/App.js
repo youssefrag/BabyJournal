@@ -39,7 +39,7 @@ function App() {
   }, [Cookies.get('user_id')])
 
   return (
-    <div className={classes.root}>
+    <div className='root'>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <UserContextProvider isUserLoggedIn={isUserLoggedIn} setUserLoggedIn={setUserLoggedIn}>
           <header>

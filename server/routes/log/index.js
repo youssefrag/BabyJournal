@@ -26,9 +26,7 @@ module.exports = (db) => {
 
   router.get('/event/:date', async (req, res) => {
     const date = req.params.date
-    console.log('date:', date)
     const logsForDate = await database.getLogsForDate(date, db)
-    console.log(logsForDate.rows)
     res.status(200).json(logsForDate.rows)
   })
 
