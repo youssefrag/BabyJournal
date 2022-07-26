@@ -71,6 +71,11 @@ export default function RegistrationPage() {
         id="registration-form"
         noValidate 
         autoComplete="off"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
       >
         <TextField
           type="text"
@@ -82,7 +87,7 @@ export default function RegistrationPage() {
           onChange={handleChange}
           className={classes.field}
           sx={{
-            marginLeft: '10px'
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -95,7 +100,7 @@ export default function RegistrationPage() {
           onChange={handleChange}
           className={classes.field}
           sx={{
-            marginLeft: '10px'
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -108,17 +113,13 @@ export default function RegistrationPage() {
           onChange={handleChange}
           className={classes.field}
           sx={{
-            marginLeft: '10px'
+            marginBottom: '20px'
           }}
         />
         <Button
           variant='contained' 
           size='large'
           onClick={handleSubmit}
-          style={{ 
-            marginLeft: 550,
-            marginTop: 50
-          }}
         >
           Register!
         </Button>

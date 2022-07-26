@@ -79,6 +79,11 @@ export default function LoginPage() {
         id="registration-form"
         noValidate 
         autoComplete="off"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
       >
         <TextField
           type="text"
@@ -90,7 +95,7 @@ export default function LoginPage() {
           onChange={handleChange}
           className={classes.field}
           sx={{
-            marginLeft: '175px'
+            marginBottom: '20px'
           }}
         />
         <TextField
@@ -103,17 +108,13 @@ export default function LoginPage() {
           onChange={handleChange}
           className={classes.field}
           sx={{
-            marginLeft: '50px'
+            marginBottom: '20px'
           }}
         />
         <Button
           variant='contained' 
           size='large'
           onClick={handleSubmit}
-          style={{ 
-            marginLeft: 550,
-            marginTop: 50
-          }}
         >
           Login!
         </Button>
